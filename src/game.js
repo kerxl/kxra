@@ -13,7 +13,7 @@ export class Game {
 
         this.scenes = {
             loading: new LoadingScene({ screen: this.screen })
-        }
+        };
     }
 
     init() {
@@ -23,7 +23,9 @@ export class Game {
     }
 
     frame(time) {
-        this.controller.sceneController.currentScene.update(time);
+        this.controller.update(time);
+
+        this.controller.sceneController.currentScene.render(time);
 
         this.isRunning && requestAnimationFrame(time => this.frame(time));
     }

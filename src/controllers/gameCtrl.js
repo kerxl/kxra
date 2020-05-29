@@ -3,17 +3,19 @@ export class GameController {
         this.length = 0;
     }
 
+    update() {
+        this.sceneController && this.sceneController.update();
+    }
+
     add(...controllers) {
         for (let ctrl of controllers) {
             if (!this[ctrl.name]) {
-                try {
-                    if (!ctrl.name) throw new Error("Invalid name of controller, name is must be like 'sceneController'");
-                    
-                    this[ctrl.name] = ctrl;
-                    this[ctrl.name].init();
+                if (!ctrl.name) throw new Error("Invalid name of controller, name is must be like 'sceneController'");
+                
+                this[ctrl.name] = ctrl;
+                this[ctrl.name].init();
 
-                    ++this.length;
-                } catch (error) { throw error; }
+                ++this.length;
             }
         }
 

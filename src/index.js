@@ -1,7 +1,7 @@
 import { Game } from "./game";
 
-window.onload = (_) => {
+window.onload = () => {
     const game = new Game();
 
     game.run();
-}
+};
