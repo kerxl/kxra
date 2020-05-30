@@ -7,6 +7,7 @@ export class LoadingScene extends Scene {
         super({ name: name, screen: screen, parent: parent, next: next });
         
         this.ielements = {
+            background: new Tile(prop.background),
             disk:  new Tile(prop.disk),
             label: new Label(prop.label)
         };
