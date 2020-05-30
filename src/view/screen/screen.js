@@ -12,6 +12,13 @@ export class Screen {
         this.cnavasDOM = this.canvas.init();
     }
 
+    drawLabel(label) {
+        this.canvas.context.fillStyle = label.color;
+        this.canvas.context.font = `${label.fontWeight} ${label.fontSize}px ${label.fontFamily || 'Lucida Consolas'}`;
+
+        this.canvas.context.fillText(label.text, label.x, label.y);
+    }
+
     drawImage(image, x, y) {
         image && this.canvas.context.drawImage(image, x, y);
     }

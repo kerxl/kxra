@@ -2,7 +2,7 @@ import { IElement } from "./ielement";
 import { SpriteSheet } from "../view/picture/spriteSheet";
 
 export class Tile extends IElement {
-    constructor({ name = "tile", width, height, animation, spriteSheet, x = 10, y = 10, animated = false }) {
+    constructor({ name = "tile", width, height, spriteSheet, x = 10, y = 10, animated = false, animation = undefined }) {
         super({ name: name, x: x, y: y });
 
         this.width  = width;

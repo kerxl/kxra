@@ -1,26 +1,22 @@
 import { Scene } from "./scene";
 import { Tile } from "../../ielements/tile";
-import { SpriteSheet } from "../picture/spriteSheet";
+import { Label } from "../../ielements/label";
 
 export class LoadingScene extends Scene {
     constructor({ name = "loading", screen, prop, parent = "none", next = "none" }) {
         super({ name: name, screen: screen, parent: parent, next: next });
         
         this.ielements = {
-            disk: new Tile({
-                name:       prop.disk.name,
-                animated:   prop.disk.animated,
-                animation:  prop.disk.animation,
-                width: prop.disk.width, height: prop.disk.height,
-                x:     prop.disk.x,     y:      prop.disk.y,
-                spriteSheet: new SpriteSheet(prop.disk.spriteSheet)
-            })
-        }
+            disk:  new Tile(prop.disk),
+            label: new Label(prop.label)
+        };
     }
 
     init() {
         for (let ie in this.ielements)
             this.ielements[ie].init();
+
+        this.ielements.label.setXY(this.ielements.disk.x - 50, this.ielements.disk.y + 100);
 
         super.init();
     }

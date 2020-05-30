@@ -25,6 +25,17 @@
                     "repeat": true,
                     "autorun": true
                 }
+            },
+            "label": {
+                "name": "loadingLabel",
+                "text": "Loading...",
+                "color": "#FFFFFF",
+                "fontSize": 36,
+                "fontWeight": "bold",
+                "animated": false,
+                "animation": {
+                    
+                }
             }
         }
     }

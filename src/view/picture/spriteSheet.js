@@ -12,7 +12,7 @@ export class SpriteSheet {
         this.spriteHeight = spriteHeight;
     }
 
-    init() { this.image || (this.image = this.loadImage()) }
+    init() { this.image || (this.image = this.loadImage()); }
 
     getSprite(index) {
         return ({
