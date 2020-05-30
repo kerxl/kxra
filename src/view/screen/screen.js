@@ -8,12 +8,16 @@ export class Screen {
         this.canvas = new Canvas({ width: width, height: height });
     }
 
-    init() { this.canvas.init(); }
+    init() {
+        this.cnavasDOM = this.canvas.init();
+    }
 
-    drawImage(image, x, y) { this.canvas.context.drawImage(image, x, y); }
+    drawImage(image, x, y) {
+        image && this.canvas.context.drawImage(image, x, y);
+    }
     
     drawSprite(sprite, x, y) {
-        this.canvas.context.drawImage(
+        sprite.image && this.canvas.context.drawImage(
             sprite.image,
             sprite.sourceX, sprite.sourceY,
             sprite.width, sprite.height,

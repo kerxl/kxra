@@ -1,7 +1,5 @@
 export class GameController {
-    constructor() {
-        this.length = 0;
-    }
+    constructor() { this.length = 0; }
 
     update() {
         this.sceneController && this.sceneController.update();
@@ -23,6 +21,9 @@ export class GameController {
     }
 
     remove(controllerName) {
-        this[controllerName] && delete this[controllerName] && --this.length;
+        if (this[controllerName]) {
+            delete this[controllerName];
+            --this.length;
+        }
     }
 }

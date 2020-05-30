@@ -22,12 +22,15 @@ export class SpriteSheet {
         });
     }
 
-    loadImage() {
-        let img = new Image(this.spriteWidth, this.spriteHeight);
-        img.src = this.src;
-
-        return img;
+    _load() {
+        return new Promise(resolve => {
+            let img = new Image(this.width, this.height);
+            img.onload = () => resolve(img);
+            img.src = this.src;
+        });
     }
+    
+    loadImage() { this._load().then(img => this.image = img).catch(error => { throw error; }); }
 
     getSourceX(index) { return (index-1) * this.spriteWidth % this.width; }
 
