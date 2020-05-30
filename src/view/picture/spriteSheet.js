@@ -1,3 +1,5 @@
+import { SpriteAnimation } from "../animation/spriteAnimation";
+
 export class SpriteSheet {
     constructor({ name = "spriteSheet", src, width, height, spriteWidth = 64, spriteHeight = 64 }) {
         this.name = name;
@@ -10,7 +12,7 @@ export class SpriteSheet {
         this.spriteHeight = spriteHeight;
     }
 
-    init() { this.image = this.loadImage(); }
+    init() { this.image || (this.image = this.loadImage()) }
 
     getSprite(index) {
         return ({
@@ -19,6 +21,17 @@ export class SpriteSheet {
             height:  this.spriteHeight,
             sourceX: this.getSourceX(index),
             sourceY: this.getSourceY(index)
+        });
+    }
+
+    createAnimation(prop) {
+        return new SpriteAnimation({
+            spriteSheet: this,
+            indices:     prop.indices,
+            autorun:     prop.autorun,
+            frameDelay:  prop.frameDelay,
+            name:        prop.name,
+            repeat:      prop.repeat
         });
     }
 

@@ -3,16 +3,18 @@ import { LoadingScene } from "./view/scene/loading";
 import { GameController } from "./controllers/gameCtrl";
 import { SceneController } from "./controllers/sceneCtrl";
 
+import gameJSON from "./game.json";
+
 export class Game {
     constructor() {
-        this.name = "Kxra";
+        this.name = gameJSON.name;
         this.isRunning = false;
 
-        this.screen = new Screen({ width: 640, height: 640 });
+        this.screen = new Screen(gameJSON.screen);
         this.controller = new GameController();
 
         this.scenes = {
-            loading: new LoadingScene({ screen: this.screen })
+            loading: new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading })
         };
     }
 
