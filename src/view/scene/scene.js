@@ -7,7 +7,5 @@ export class Scene {
         this.next = next;
     }
 
-    init() {
-        this.status = "loaded";
-    }
+    init() { this.status = "loaded"; }
 }

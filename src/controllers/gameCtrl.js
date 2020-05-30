@@ -5,6 +5,13 @@ export class GameController {
         this.sceneController && this.sceneController.update();
     }
 
+    render(time, screen) {
+        this.update();
+
+        this.sceneController && this.sceneController.currentScene.render(time, screen);
+        this.fpsController   && this.fpsController.render(time, screen);
+    }
+
     add(...controllers) {
         for (let ctrl of controllers) {
             if (!this[ctrl.name]) {

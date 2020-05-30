@@ -1,6 +1,18 @@
 {
     "name": "Kxra",
     "screen": { "width": 640, "height": 640 },
+    "fpsController": {
+        "label": {
+            "name": "fpsLabel",
+            "text": "FPS: ",
+            "color": "#FFFFFF55",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "animated": false,
+            "x": 550,
+            "y": 30
+        }
+    },
     "scenes": {
         "loading": {
             "background": {
@@ -17,7 +29,8 @@
                     "spriteWidth": 640,
                     "spriteHeight": 640
                 },
-                "animated": false
+                "animated": false,
+                "options": { "fog": true }
             },
             "disk": {
                 "name": "loadingDisk",
@@ -37,7 +50,7 @@
                 "animationProp": {
                     "name": "loadingDiskSpriteAnimation",
                     "indices": [1,2,3,4,5,6,7,8],
-                    "frameDelay": 50,
+                    "frameDelay": 80,
                     "repeat": true,
                     "autorun": true
                 }
@@ -48,10 +61,12 @@
                 "color": "#FFFFFF",
                 "fontSize": 36,
                 "fontWeight": "bold",
+                "x": 240,
+                "y": 380,
                 "animated": true,
                 "animationProp": {
                     "name": "loadingLabelAnimation",
-                    "frameDelay": 200,
+                    "frameDelay": 300,
                     "textCollection": ["Loading", "Loading.", "Loading..", "Loading..."],
                     "repeat": true,
                     "autorun": true

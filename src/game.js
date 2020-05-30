@@ -1,7 +1,9 @@
-import { Screen } from "./view/screen/screen";
+import { Screen       } from "./view/screen/screen";
 import { LoadingScene } from "./view/scene/loading";
-import { GameController } from "./controllers/gameCtrl";
-import { SceneController } from "./controllers/sceneCtrl";
+
+import { GameController  }  from "./controllers/gameCtrl";
+import { SceneController }  from "./controllers/sceneCtrl";
+import { FPSController   }  from "./controllers/fpsController";
 
 import gameJSON from "./game.json";
 
@@ -21,13 +23,14 @@ export class Game {
     init() {
         this.screen.init();
 
-        this.controller.add(new SceneController({ scenes: this.scenes }));
+        this.controller.add(
+            new SceneController({ scenes: this.scenes }),
+            new FPSController(gameJSON.fpsController)
+        );
     }
 
     frame(time) {
-        this.controller.update(time);
-
-        this.controller.sceneController.currentScene.render(time);
+        this.controller.render(time, this.screen);
 
         this.isRunning && requestAnimationFrame(time => this.frame(time));
     }

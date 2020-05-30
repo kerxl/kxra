@@ -3,8 +3,8 @@ import { Tile } from "../../ielements/tile";
 import { Label } from "../../ielements/label";
 
 export class LoadingScene extends Scene {
-    constructor({ name = "loading", screen, prop, parent = "none", next = "none" }) {
-        super({ name: name, screen: screen, parent: parent, next: next });
+    constructor({ name = "loading", screen, prop, parent = "none", next = "none", fpsCtrl }) {
+        super({ name: name, screen: screen, parent: parent, next: next, fpsCtrl: fpsCtrl });
         
         this.ielements = {
             background: new Tile(prop.background),
@@ -17,14 +17,10 @@ export class LoadingScene extends Scene {
         for (let ie in this.ielements)
             this.ielements[ie].init();
 
-        this.ielements.label.setXY(this.ielements.disk.x - 50, this.ielements.disk.y + 100);
-
         super.init();
     }
 
     render(time) {
-        this.screen.fill("#000000");
-
         for (let ie in this.ielements)
             this.ielements[ie].render(time, this.screen);
     }

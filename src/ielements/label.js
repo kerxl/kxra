@@ -25,13 +25,9 @@ export class Label extends IElement {
         });
     }
 
-    update(time) {
-        this.animated && this.animation.update(time);
-    }
-
     render(time, screen) {
         this.update(time);
-        
+           
         screen.drawLabel(this);
     }
 }

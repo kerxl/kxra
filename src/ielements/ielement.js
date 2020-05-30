@@ -18,6 +18,8 @@ export class IElement {
         delete this._animation;
     }
 
+    update(time) { this.animated && this.animation.update(time); }
+
     createAnimation() {}
 
     setXY(newX, newY) {
