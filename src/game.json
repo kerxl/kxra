@@ -18,7 +18,7 @@
                     "spriteHeight": 64
                 },
                 "animated": true,
-                "animation": {
+                "animationProp": {
                     "name": "loadingDiskSpriteAnimation",
                     "indices": [1,2,3,4,5,6,7,8],
                     "frameDelay": 50,
@@ -32,9 +32,13 @@
                 "color": "#FFFFFF",
                 "fontSize": 36,
                 "fontWeight": "bold",
-                "animated": false,
-                "animation": {
-                    
+                "animated": true,
+                "animationProp": {
+                    "name": "loadingLabelAnimation",
+                    "frameDelay": 200,
+                    "textCollection": ["Loading", "Loading.", "Loading..", "Loading..."],
+                    "repeat": true,
+                    "autorun": true
                 }
             }
         }

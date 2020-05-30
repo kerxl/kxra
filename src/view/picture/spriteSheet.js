@@ -24,17 +24,6 @@ export class SpriteSheet {
         });
     }
 
-    createAnimation(prop) {
-        return new SpriteAnimation({
-            spriteSheet: this,
-            indices:     prop.indices,
-            autorun:     prop.autorun,
-            frameDelay:  prop.frameDelay,
-            name:        prop.name,
-            repeat:      prop.repeat
-        });
-    }
-
     _load() {
         return new Promise(resolve => {
             let img = new Image(this.width, this.height);

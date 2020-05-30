@@ -1,10 +1,11 @@
 import { IElement } from "./ielement";
+import { LabelAnimation } from "../view/animation/labelAnimation";
 
 export class Label extends IElement {
     constructor({ name = "label", text = "label", x = 10, y = 10, color = "#444444",
-        fontSize = 36, fontWeight = "normal", fontFamily = "Courier New", animated = false, animation = undefined }) {
+        fontSize = 36, fontWeight = "normal", fontFamily = "Courier New", animated = false, animationProp = undefined }) {
         
-        super({ name: name, x: x, y: y });
+        super({ name: name, x: x, y: y, animated: animated, animationProp: animationProp });
 
         this.text = text;
         this.color = color;
@@ -12,12 +13,16 @@ export class Label extends IElement {
         this.fontSize   = fontSize;
         this.fontWeight = fontWeight;
         this.fontFamily = fontFamily;
-
-        (this.animated = animated) && (this.animation = this.createAnimation(animation));
     }
 
-    init() {
-        this.animated && this.animation.init();
+    createAnimation(prop) {
+        return new LabelAnimation({
+            label: this,
+            frameDelay:     prop.frameDelay,
+            repeat:         prop.repeat,
+            autorun:        prop.autorun,
+            textCollection: prop.textCollection
+        });
     }
 
     update(time) {

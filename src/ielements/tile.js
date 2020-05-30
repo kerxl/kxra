@@ -1,21 +1,32 @@
 import { IElement } from "./ielement";
 import { SpriteSheet } from "../view/picture/spriteSheet";
+import { SpriteAnimation } from "../view/animation/spriteAnimation";
 
 export class Tile extends IElement {
-    constructor({ name = "tile", width, height, spriteSheet, x = 10, y = 10, animated = false, animation = undefined }) {
-        super({ name: name, x: x, y: y });
+    constructor({ name = "tile", width, height, spriteSheet, x = 10, y = 10, animated = false, animationProp = undefined }) {
+        super({ name: name, x: x, y: y, animated: animated, animationProp: animationProp });
 
         this.width  = width;
         this.height = height;
 
         this.spriteSheet = new SpriteSheet(spriteSheet);
-        (this.animated = animated) && (this.animation = this.spriteSheet.createAnimation(animation));
     }
 
     init() {
         this.spriteSheet.init();
 
-        this.animated && this.animation.init();
+        super.init();
+    }
+
+    createAnimation(prop) {
+        return new SpriteAnimation({
+            spriteSheet: this.spriteSheet,
+            indices:     prop.indices,
+            autorun:     prop.autorun,
+            frameDelay:  prop.frameDelay,
+            name:        prop.name,
+            repeat:      prop.repeat
+        });
     }
 
     update(time) {
