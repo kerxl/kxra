@@ -1,6 +1,6 @@
 import { Animation } from "./animation";
 
-export class SpriteAnimation extends Animation{
+export class SpriteAnimation extends Animation {
     constructor({ name = "spriteAnimation", spriteSheet, indices, frameDelay = 100, repeat = true, autorun = false }) {
         super({ name: name, frameDelay: frameDelay, repeat: repeat, autorun: autorun });
 
