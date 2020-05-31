@@ -90,6 +90,23 @@
                 },
                 "animated": false,
                 "options": { "fog": true }
+            },
+            "button": {
+                "name": "playeButton",
+                "width": 200,
+                "height": 80,
+                "bgcolor": "#800000",
+                "x": 400,
+                "y": 500,
+                "labelProp": {
+                    "name": "playButtonLabel",
+                    "x": 40,
+                    "y": 55,
+                    "text": "Play",
+                    "color": "#FFFFFF",
+                    "fontWeight": "bold",
+                    "fontSize": 54
+                }
             }
         }
     }

@@ -12,6 +12,15 @@ export class Screen {
         this.cnavasDOM = this.canvas.init();
     }
 
+    drawButton(button) {
+        this.canvas.context.fillStyle = "#000000";
+        this.canvas.context.fillRect(button.x - 5, button.y - 5, button.width + 10, button.height + 10);
+        this.canvas.context.fillStyle = button.bgcolor;
+        this.canvas.context.fillRect(button.x, button.y, button.width, button.height);
+
+        this.drawLabel(button.label);
+    }
+
     drawLabel(label) {
         this.canvas.context.fillStyle = label.color;
         this.canvas.context.font = `${label.fontWeight} ${label.fontSize}px ${label.fontFamily || 'Lucida Consolas'}`;

@@ -1,5 +1,3 @@
-import { SpriteAnimation } from "../animation/spriteAnimation";
-
 export class SpriteSheet {
     constructor({ name = "spriteSheet", src, width, height, spriteWidth = 64, spriteHeight = 64 }) {
         this.name = name;

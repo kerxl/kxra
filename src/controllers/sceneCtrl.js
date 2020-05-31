@@ -31,13 +31,14 @@ export class SceneController {
                 
                 this.scenes[scene.name] = scene;
                 this.scenes[scene.name].init();
+                this.scenes[scene.name].isInitialized = true;
             }
         }
 
         return this.scenes.length;
     }
 
-    remove(sceneName) { this.scenes[sceneName] && delete this.scenes[sceneName]; }
+    remove(sceneName) { this.scenes[sceneName] && this.scenes.splice(this.scenes.findIndex(el => el.name == sceneName)); }
 
     update() {
         for (let scene in this.scenes) {
