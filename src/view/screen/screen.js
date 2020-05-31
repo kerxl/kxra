@@ -23,7 +23,7 @@ export class Screen {
 
     drawLabel(label) {
         this.canvas.context.fillStyle = label.color;
-        this.canvas.context.font = `${label.fontWeight} ${label.fontSize}px ${label.fontFamily || 'Lucida Consolas'}`;
+        this.canvas.context.font = `${label.fontWeight} ${label.fontSize}px ${label.fontFamily || "Lucida Consolas"}`;
 
         this.canvas.context.fillText(label.text, label.x, label.y);
     }
