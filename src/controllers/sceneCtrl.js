@@ -10,7 +10,7 @@ export class SceneController {
     }
 
     init() {
-        if (!this.scenes.loading) throw new Error("Scenes must have loading scene");
+        if (!this.scenes.loading) throw new Error("Game must have loading scene");
         
         this.setScene("loading");
     }
@@ -37,9 +37,7 @@ export class SceneController {
         return this.scenes.length;
     }
 
-    remove(sceneName) {
-        this.scenes[sceneName] && delete this.scenes[sceneName];
-    }
+    remove(sceneName) { this.scenes[sceneName] && delete this.scenes[sceneName]; }
 
     update() {
         for (let scene in this.scenes) {

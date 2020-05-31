@@ -72,6 +72,25 @@
                     "autorun": true
                 }
             }
+        },
+        "startMenu": {
+            "background": {
+                "name": "startMenuBackground",
+                "width": 640,
+                "height": 640,
+                "x": 0,
+                "y": 0,
+                "spriteSheet": {
+                    "name": "startMenuBackgroundSpriteSheet",
+                    "src": "/img/backgrounds/startMenuScene.jpg",
+                    "width": 640,
+                    "height": 640,
+                    "spriteWidth": 640,
+                    "spriteHeight": 640
+                },
+                "animated": false,
+                "options": { "fog": true }
+            }
         }
     }
 }

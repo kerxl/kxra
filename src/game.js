@@ -1,12 +1,12 @@
 import { Screen       } from "./view/screen/screen";
 import { LoadingScene } from "./view/scene/loading";
+import { StartMenu } from "./view/scene/menu/start";
 
 import { GameController  }  from "./controllers/gameCtrl";
 import { SceneController }  from "./controllers/sceneCtrl";
 import { FPSController   }  from "./controllers/fpsController";
 
 import gameJSON from "./game.json";
-import { StartMenu } from "./view/scene/menu/start";
 
 export class Game {
     constructor() {
@@ -15,22 +15,20 @@ export class Game {
 
         this.screen = new Screen(gameJSON.screen);
         this.controller = new GameController();
-
-        this.scenes = {
-            loading: new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading })
-        };
     }
 
     init() {
         this.screen.init();
 
         this.controller.add(
-            new SceneController({ scenes: this.scenes }),
+            new SceneController({ scenes: {
+                loading: new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading })
+            } }),
             new FPSController(gameJSON.fpsController)
         );
 
         this.controller.sceneController.add(
-            new StartMenu({ screen: this.screen })
+            new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu })
         );
     }
 

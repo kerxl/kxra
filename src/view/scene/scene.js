@@ -7,5 +7,21 @@ export class Scene {
         this.next = next;
     }
 
-    init() { this.status = "loaded"; }
+    init() {
+        !this.ielements && (this.ielements = {});
+
+        for (let ie in this.ielements)
+            this.ielements[ie].init();
+
+        this.status = "loaded";
+    }
+
+    update() {}
+
+    render(time) {
+        this.update(time);
+
+        for (let ie in this.ielements)
+            this.ielements[ie].render(time, this.screen);
+    }
 }

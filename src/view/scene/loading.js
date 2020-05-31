@@ -13,24 +13,10 @@ export class LoadingScene extends Scene {
         };
     }
 
-    init() {
-        for (let ie in this.ielements)
-            this.ielements[ie].init();
-
-        super.init();
-    }
-
-    update(time) {
+    update() {
         setTimeout(() => {
             this.status = "finish";
             this.next = "startMenu";
-        }, (1 + Math.random()) * 1e3);
-    }
-
-    render(time) {
-        this.update(time);
-
-        for (let ie in this.ielements)
-            this.ielements[ie].render(time, this.screen);
+        }, (1 + Math.random()) * 1e3); // 1-2 sec
     }
 }

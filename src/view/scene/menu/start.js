@@ -1,11 +1,12 @@
 import { Scene } from "../scene";
+import { Tile } from "../../../ielements/tile";
 
 export class StartMenu extends Scene {
-    constructor({ name = "startMenu", screen, parent = "none", next = "none" }) {
+    constructor({ name = "startMenu", screen, prop, parent = "none", next = "none" }) {
         super({ name: name, screen: screen, parent: parent, next: next });
-    }
 
-    render(time) {
-        this.screen.fill("#000000");
+        this.ielements = {
+            background: new Tile(prop.background),
+        };
     }
 }
