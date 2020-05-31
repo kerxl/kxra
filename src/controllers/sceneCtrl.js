@@ -16,10 +16,29 @@ export class SceneController {
     }
 
     setScene(sceneName) {
+        if (!this.scenes[sceneName]) return;
+
         !this.scenes[sceneName].isInitialized && (this.scenes[sceneName].isInitialized = true) && this.scenes[sceneName].init();
         
         this.currentScene = this.scenes[sceneName];
         this.currentScene.status = "running";
+    }
+
+    add(...scenes) {
+        for (let scene of scenes) {
+            if (!this.scenes[scene.name]) {
+                if (!scene.name) throw new Error("Scene must have name, like 'startMenu'");
+                
+                this.scenes[scene.name] = scene;
+                this.scenes[scene.name].init();
+            }
+        }
+
+        return this.scenes.length;
+    }
+
+    remove(sceneName) {
+        this.scenes[sceneName] && delete this.scenes[sceneName];
     }
 
     update() {
