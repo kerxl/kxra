@@ -23,7 +23,7 @@
                 "y": 0,
                 "spriteSheet": {
                     "name": "loadingBackgroundSpriteSheet",
-                    "src": "/img/backgrounds/loadingScene.jpg",
+                    "src": "./img/backgrounds/loadingScene.jpg",
                     "width": 640,
                     "height": 640,
                     "spriteWidth": 640,
@@ -40,7 +40,7 @@
                 "y": 288,
                 "spriteSheet": {
                     "name": "loadingDiskSpriteSheet",
-                    "src": "/img/tile-sets/loadingDisk.png",
+                    "src": "./img/tile-sets/loadingDisk.png",
                     "width": 512,
                     "height": 64,
                     "spriteWidth": 64,
@@ -82,7 +82,7 @@
                 "y": 0,
                 "spriteSheet": {
                     "name": "startMenuBackgroundSpriteSheet",
-                    "src": "/img/backgrounds/startMenuScene.jpg",
+                    "src": "./img/backgrounds/startMenuScene.jpg",
                     "width": 640,
                     "height": 640,
                     "spriteWidth": 640,
