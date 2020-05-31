@@ -11,7 +11,7 @@ export class Animation {
         this.isRunning = false;
     }
 
-    init() { this.autorun && (this.isRunning = true); }
+    init() { this.autorun && this.run(); }
 
     run()  { this.isRunning = true;  }
     stop() { this.isRunning = false; }

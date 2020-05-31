@@ -8,11 +8,9 @@ export class Canvas {
         let div = document.getElementById("game") || document.body.appendChild( document.createElement("div") );
         div.id = "game";
 
-        let canv = div.getElementsByTagName("canvas")[0] || div.appendChild(document.createElement("canvas"));
-        canv.width  = this.width;
-        canv.height = this.height;
-        this.context = canv.getContext("2d");
-
-        return canv;
+        this.DOM = div.getElementsByTagName("canvas")[0] || div.appendChild(document.createElement("canvas"));
+        this.DOM.width  = this.width;
+        this.DOM.height = this.height;
+        this.context = this.DOM.getContext("2d");
     }
 }

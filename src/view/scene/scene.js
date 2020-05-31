@@ -16,6 +16,12 @@ export class Scene {
         this.status = "loaded";
     }
 
+    startEventListen() {}
+    stopEventListen()  {}
+
+    start() { this.startEventListen(); }
+    stop()  { this.stopEventListen();  }
+
     update() {}
 
     render(time) {

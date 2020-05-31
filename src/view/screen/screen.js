@@ -9,7 +9,7 @@ export class Screen {
     }
 
     init() {
-        this.cnavasDOM = this.canvas.init();
+        this.canvas.init();
     }
 
     drawButton(button) {

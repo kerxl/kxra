@@ -91,11 +91,16 @@
                 "animated": false,
                 "options": { "fog": true }
             },
-            "button": {
+            "playButton": {
                 "name": "playeButton",
                 "width": 200,
                 "height": 80,
                 "bgcolor": "#800000",
+                "colors": {
+                    "default": "#800000",
+                    "hover": "#80000066",
+                    "click": "#00800099"
+                },
                 "x": 400,
                 "y": 500,
                 "labelProp": {

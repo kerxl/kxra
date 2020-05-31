@@ -19,8 +19,9 @@ export class SceneController {
         if (!this.scenes[sceneName]) return;
 
         !this.scenes[sceneName].isInitialized && (this.scenes[sceneName].isInitialized = true) && this.scenes[sceneName].init();
-        
+
         this.currentScene = this.scenes[sceneName];
+        this.currentScene.start();
         this.currentScene.status = "running";
     }
 
@@ -45,6 +46,7 @@ export class SceneController {
             if (this.scenes[scene].status == "finish") {
                 if (scene.next == "none") this.scenes[scene].status = "running";
                 else {
+                    this.currentScene.stop();
                     this.setScene(this.scenes[scene].next);
                     this.currentScene.parent = this.scenes[scene].name;
 

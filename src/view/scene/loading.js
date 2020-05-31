@@ -12,8 +12,8 @@ export class LoadingScene extends Scene {
             label:      new Label(prop.label)
         };
     }
-
-    update() {
+    
+    start() {
         setTimeout(() => {
             this.status = "finish";
             this.next = "startMenu";
