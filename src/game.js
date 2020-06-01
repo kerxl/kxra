@@ -1,6 +1,7 @@
 import { Screen       } from "./view/screen/screen";
 import { LoadingScene } from "./view/scene/loading";
-import { StartMenu } from "./view/scene/menu/start";
+import { StartMenu }    from "./view/scene/menu/start";
+import { Level_1 }      from "./view/scene/level/level_1";
 
 import { GameController  }  from "./controllers/gameCtrl";
 import { SceneController }  from "./controllers/sceneCtrl";
@@ -22,13 +23,11 @@ export class Game {
 
         this.controller.add(
             new SceneController({ scenes: {
-                loading: new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading })
+                loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
+                startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
+                level_1:   new Level_1({ screen: this.screen, prop: gameJSON.scenes.level_1 })
             } }),
             new FPSController(gameJSON.fpsController)
-        );
-
-        this.controller.sceneController.add(
-            new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu })
         );
     }
 

@@ -17,7 +17,7 @@ export class StartMenu extends Scene {
         
         if (this.ielements.playButton.__in__(event)) {
             this.status = "finish";
-            this.next = "loading";
+            this.next = "level_1";
 
             document.body.style.cursor = "default";
         }

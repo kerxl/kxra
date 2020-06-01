@@ -8,9 +8,7 @@ export class Screen {
         this.canvas = new Canvas({ width: width, height: height });
     }
 
-    init() {
-        this.canvas.init();
-    }
+    init() { this.canvas.init(); }
 
     drawButton(button) {
         this.canvas.context.fillStyle = "#000000";
@@ -28,9 +26,7 @@ export class Screen {
         this.canvas.context.fillText(label.text, label.x, label.y);
     }
 
-    drawImage(image, x, y) {
-        image && this.canvas.context.drawImage(image, x, y);
-    }
+    drawImage(image, x, y) { image && this.canvas.context.drawImage(image, x, y); }
     
     drawSprite(sprite, x, y) {
         sprite.image && this.canvas.context.drawImage(

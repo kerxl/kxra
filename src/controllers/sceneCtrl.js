@@ -11,7 +11,7 @@ export class SceneController {
 
     init() {
         if (!this.scenes.loading) throw new Error("Game must have loading scene");
-        
+
         this.setScene("loading");
     }
 
