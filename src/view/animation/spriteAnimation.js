@@ -6,7 +6,8 @@ export class SpriteAnimation extends Animation {
 
         this.spriteSheet = spriteSheet;
         
-        this.frames = this.getFrames(indices);
+        this.indices = indices;
+        this.frames = this.getFrames(this.indices);
         this.currentFrameIndex = 0;
     }
 

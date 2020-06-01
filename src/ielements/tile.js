@@ -34,7 +34,10 @@ export class Tile extends IElement {
     render(time, screen) {
         this.update(time);
 
-        screen.drawSprite(this.spriteSheet.getSprite((this.animated && this.animation.currentFrameIndex +1) || 1), this.x, this.y);
+        screen.drawSprite(
+            this.spriteSheet.getSprite((this.animated && this.animation.indices[this.animation.currentFrameIndex]) || 1),
+            this.x, this.y
+        );
         this.__options__ && this.__options__.fog && screen.fill("#00000066");
     }
 }

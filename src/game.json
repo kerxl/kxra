@@ -13,6 +13,49 @@
             "y": 30
         }
     },
+    "player": {
+        "name": "Kxra",
+        "moveSpeed": 3,
+        "body": { "x": 100, "y": 100, "width": 64, "height": 64 },
+        "view": {
+            "spriteSheet": {
+                "name": "playerSpriteSheet",
+                "src": "/img/tile-sets/player.png",
+                "width": 832,
+                "height": 1344,
+                "spriteWidth": 64,
+                "spriteHeight": 64
+            },
+            "animation": {
+                "name": "playerAnimation",
+                "states": [
+                    { "name": "idle-up",    "indices": [1, 2]  , "frameDelay": 300, "repeat": true, "autorun": false},
+                    { "name": "idle-right", "indices": [40, 41], "frameDelay": 300, "repeat": true, "autorun": false},
+                    { "name": "idle-down",  "indices": [27, 28], "frameDelay": 300, "repeat": true, "autorun": false},
+                    { "name": "idle-left",  "indices": [14, 15], "frameDelay": 300, "repeat": true, "autorun": false},
+
+                    { "name": "walk-up",    "indices": [105, 106, 107, 108, 109, 110, 111, 112, 113], "frameDelay": 60, "repeat": true, "autorun": false},
+                    { "name": "walk-right", "indices": [144, 145, 146, 147, 148, 149, 150, 151, 152], "frameDelay": 60, "repeat": true, "autorun": false},
+                    { "name": "walk-down",  "indices": [131, 132, 133, 134, 135, 136, 137, 137, 138], "frameDelay": 60, "repeat": true, "autorun": false},
+                    { "name": "walk-left",  "indices": [118, 119, 119, 120, 121, 122, 123, 124, 125], "frameDelay": 60, "repeat": true, "autorun": false},
+
+                    { "name": "spell_cast-up",    "indices": [1, 2, 3, 4, 5, 6, 7]       , "frameDelay": 50, "repeat": false, "autorun": false},
+                    { "name": "spell_cast-right", "indices": [40, 41, 42, 43, 44, 45, 46], "frameDelay": 50, "repeat": false, "autorun": false},
+                    { "name": "spell_cast-down",  "indices": [27, 28, 29, 30, 31, 32, 33], "frameDelay": 50, "repeat": false, "autorun": false},
+                    { "name": "spell_cast-left",  "indices": [14, 15, 16, 17, 18, 19, 20], "frameDelay": 50, "repeat": false, "autorun": false},
+
+                    { "name": "attack-up",    "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 40, "repeat": false, "autorun": false},
+                    { "name": "attack-right", "indices": [209, 210, 211, 212, 213, 214], "frameDelay": 40, "repeat": false, "autorun": false},
+                    { "name": "attack-down",  "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 40, "repeat": false, "autorun": false},
+                    { "name": "attack-left",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 40, "repeat": false, "autorun": false},
+
+                    
+                    { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
+                ]
+            }
+        },
+        "keys": { "up": 87, "right": 68, "down": 83, "left": 65, "spellCast": 32 }
+    },
     "scenes": {
         "loading": {
             "background": {
