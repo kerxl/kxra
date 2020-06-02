@@ -13,6 +13,8 @@ export class PlayerKeyController {
 
             Space: { code: 32, isDown: false },
         }
+
+        this.isKeyDown = false;
     }
 
     start() { this.startEventListen(); }
@@ -30,6 +32,8 @@ export class PlayerKeyController {
         this._listenerKeyDown && window.removeEventListener("keydown", this._listenerKeyDown) && delete this._listenerKeyDown;
         this._listenerKeyUp   && window.removeEventListener("keyup",   this._listenerKeyUp)   && delete this._listenerKeyUp;
     }
+
+    update() { this.isKeyDown = this.keys.KeyW.isDown || this.keys.KeyD.isDown || this.keys.KeyS.isDown || this.keys.KeyA.isDown; }
 
     keyDownHandler(event) {
         if (this.keys[event.code]) {

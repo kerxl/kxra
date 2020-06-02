@@ -15,11 +15,11 @@ export class Player {
 
     init() { this.view.init(); }
 
-    update() { this.controller.update(); }
+    update(time) { this.controller.update(time); }
 
     render(time, screen) {
         this.update(time);
-        
-        screen.drawSprite(this.view.spriteSheet.getSprite(27), this.body.x, this.body.y);
+
+        screen.drawSprite(this.view.getSprite(), this.body.x, this.body.y);
     }
 }
