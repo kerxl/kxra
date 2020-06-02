@@ -16,7 +16,14 @@
     "player": {
         "name": "Kxra",
         "moveSpeed": 3,
-        "body": { "x": 100, "y": 100, "width": 64, "height": 64 },
+        "body": {
+            "x": 100, "y": 100,
+            "width": 64, "height": 64,
+            "boxCollider": {
+                "x": 7, "y": 14,
+                "width": 50, "height": 50
+            }
+        },
         "view": {
             "spriteSheet": {
                 "name": "playerSpriteSheet",
