@@ -53,6 +53,11 @@
                     { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
                 ]
             }
+        },
+        "controller": {
+            "moveController": {
+                "keys": { "up": "KeyW", "right": "KeyD", "down": "KeyS", "left": "KeyA" }
+            }
         }
     },
     "scenes": {
