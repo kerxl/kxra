@@ -11,18 +11,10 @@ export class Level extends Scene {
 
     init() {
         this.map.init();
+        this.player.controller.stop();
+        this.player.controller.start();
 
         super.init();
-    }
-
-    start() {
-        this.player.controller.start();
-        super.start();
-    }
-
-    stop() {
-        this.player.controller.stop();
-        super.stop();
     }
 
     render(time) {

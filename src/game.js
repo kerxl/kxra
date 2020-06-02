@@ -18,7 +18,7 @@ export class Game {
         this.screen = new Screen(gameJSON.screen);
 
         this.controller = new GameController();
-        
+
         this.player = new Player(gameJSON.player);
     }
 
