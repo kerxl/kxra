@@ -3,7 +3,7 @@ export class Canvas {
         this.width  = width;
         this.height = height;
     }
-
+    
     init() {
         let div = document.getElementById("game") || document.body.appendChild( document.createElement("div") );
         div.id = "game";

@@ -5,7 +5,8 @@ export class SceneController {
         this.scenes = {};
         for (let scene in scenes) {
             this.scenes[scene] = scenes[scene];
-            this.scenes[scene].isInitialized = false;
+            this.scenes[scene].init();
+            this.scenes[scene].isInitialized = true;
         }
     }
 

@@ -24,9 +24,8 @@ export class Game {
 
     init() {
         this.screen.init();
-
         this.player.init();
-
+        
         this.controller.add(
             new SceneController({ scenes: {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
