@@ -30,7 +30,7 @@ export class Game {
             new SceneController({ scenes: {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
                 startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
-                level_1:   new Level_1({ player: this.player, screen: this.screen, prop: gameJSON.scenes.level_1 })
+                level_1:   new Level_1({ player: this.player, screen: this.screen, prop: gameJSON.scenes.level })
             } }),
             new FPSController(gameJSON.fpsController)
         );

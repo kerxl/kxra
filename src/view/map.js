@@ -1,15 +1,15 @@
 import { SpriteSheet } from "../view/picture/spriteSheet";
 
 export class Map {
-    constructor(prop) {
-        this.name = prop.name;
-        this.mapData = prop;
+    constructor(mapData) {
+        this.data = mapData.data;
+        this.name = this.data.name;
 
         
-        this.tileSet = new SpriteSheet(prop.spriteSheet);
+        this.tileSet = new SpriteSheet(mapData.tileSet);
 
-        this.column = this.mapData.width;
-        this.row = this.mapData.height;
+        this.column = this.data.width;
+        this.row = this.data.height;
 
         this.layers = [];
         this.colliders = [];
@@ -22,7 +22,7 @@ export class Map {
     }
 
     createLayers() {
-        this.mapData.layers.forEach(layer => {
+        this.data.layers.forEach(layer => {
             if (layer.type == "tilelayer") {
                 this.layers.push({
                     name:    layer.name,
@@ -39,7 +39,7 @@ export class Map {
 
         this.layers.sort( (a, b) => a.z_index - b.z_index );
 
-        delete this.mapData;
+        delete this.data;
     }
 
     render(screen) {
