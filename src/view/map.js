@@ -15,6 +15,7 @@ export class Map {
 
         this.layers = [];
         this.colliders = [];
+        this.upperLayer = [];
     }
 
     init() {
@@ -45,13 +46,28 @@ export class Map {
         delete this.data;
     }
 
+    secondRender(screen) {
+        this.upperLayer.forEach(tile => screen.drawSprite(tile.sprite, tile.x, tile.y) );
+        this.upperLayer = [];
+    }
+
     render(screen) {
         this.layers.forEach(layer => {
             let col = 0, row = 0;
 
             layer.indexes.forEach(index => {
-                if (index > 0)
-                    screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
+                if (index > 0) {
+                    if (layer.name == "wall" && this.collision.intersect({
+                        x1: this.tileSet.spriteWidth * col,    x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
+                        y1: this.tileSet.spriteHeight * row,   y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight-20
+                    })) {
+                        this.upperLayer.push({
+                            sprite: this.tileSet.getSprite(index),
+                            x: this.tileSet.spriteWidth * col,
+                            y: this.tileSet.spriteHeight * row
+                        })
+                    } else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
+                }
 
                 ++col;
                 if (col > this.column - 1) {

@@ -9,10 +9,10 @@ export class Collision {
     outCollider(collider) {
         let body = this.player.body;
         let box = {
-            x1: this.player.body.boxCollider.x, x2: this.player.body.boxCollider.x + this.player.body.boxCollider.width,
-            y1: this.player.body.boxCollider.y, y2: this.player.body.boxCollider.y + this.player.body.boxCollider.height,
+            _x: this.player.body.boxCollider._x, _y: this.player.body.boxCollider._y,
+            x1: this.player.body.boxCollider.x,  x2: this.player.body.boxCollider.x + this.player.body.boxCollider.width,
+            y1: this.player.body.boxCollider.y,  y2: this.player.body.boxCollider.y + this.player.body.boxCollider.height,
             width: this.player.body.boxCollider.width, height: this.player.body.boxCollider.height,
-            _x: this.player.body.boxCollider._x, _y: this.player.body.boxCollider._y
         };
 
         let min = Math.min(
@@ -36,6 +36,7 @@ export class Collision {
         return (box.x2 > collider.x1 && box.x1 < collider.x1 && box.y2 > collider.y1 && box.y1 < collider.y2) ||
                (box.x1 < collider.x2 && box.x2 > collider.x2 && box.y2 > collider.y1 && box.y1 < collider.y2) ||
                (box.y2 > collider.y1 && box.y1 < collider.y1 && box.x2 > collider.x1 && box.x1 < collider.x2) ||
-               (box.y1 < collider.y2 && box.y2 > collider.y2 && box.x2 > collider.x1 && box.x1 < collider.x2);
+               (box.y1 < collider.y2 && box.y2 > collider.y2 && box.x2 > collider.x1 && box.x1 < collider.x2) ||
+               (box.x1 >= collider.x1 && box.x2 <= collider.x2 && box.y1 >= collider.y1 && box.y2 <= collider.y2);
     }
 }
