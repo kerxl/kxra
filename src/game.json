@@ -29,7 +29,7 @@
         "view": {
             "spriteSheet": {
                 "name": "playerSpriteSheet",
-                "src": "/img/tile-sets/player.png",
+                "src": "./img/tile-sets/player.png",
                 "width": 832,
                 "height": 1344,
                 "spriteWidth": 64,
