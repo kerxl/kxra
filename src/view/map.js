@@ -31,8 +31,8 @@ export class Map {
                 });
             } else if (layer.type == "objectgroup") {
                 this.colliders = layer.objects.map(item => ({
-                    x1: item.x1, x2: item.x1 + item.width,
-                    y1: item.y1, y2: item.y1 + item.height
+                    x1: item.x, x2: item.x + item.width,
+                    y1: item.y, y2: item.y + item.height
                 }) );
             }
         });
@@ -56,6 +56,10 @@ export class Map {
                     ++row;
                 }
             });
+        });
+
+        this.colliders.forEach(collider => {
+            screen.strokeRect(collider.x1, collider.y1, collider.x2-collider.x1, collider.y2-collider.y1)
         });
     }
 

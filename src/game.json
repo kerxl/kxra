@@ -19,9 +19,11 @@
         "body": {
             "x": 100, "y": 100,
             "width": 64, "height": 64,
+            "visible": true,
             "boxCollider": {
-                "x": 7, "y": 14,
-                "width": 50, "height": 50
+                "x": 16, "y": 45,
+                "width": 30, "height": 19,
+                "visible": true
             }
         },
         "view": {

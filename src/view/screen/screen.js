@@ -38,6 +38,10 @@ export class Screen {
         );
     }
 
+    strokeRect(x, y, width, height) {
+        this.canvas.context.strokeRect(x, y, width, height);
+    }
+
     fill(color) {
         this.canvas.context.fillStyle = color;
         this.canvas.context.fillRect(0, 0, this.width, this.height);
