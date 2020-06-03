@@ -5,7 +5,6 @@ import { PlayerController } from "./controllers/playerController";
 export class Player {
     constructor(prop) {
         this.name = prop.name;
-        this.moveSpeed = prop.moveSpeed;
 
         this.body = new PlayerBody(prop.body);
         this.view = new PlayerView(prop.view);
@@ -13,7 +12,10 @@ export class Player {
         this.controller = new PlayerController({ player: this, prop: prop.controller });
     }
 
-    init() { this.view.init(); }
+    init() {
+        this.view.init();
+        this.body.init();
+    }
 
     update(time) {
         this.controller.update(time);

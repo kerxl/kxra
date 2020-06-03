@@ -1,7 +1,9 @@
 import { SpriteSheet } from "../view/picture/spriteSheet";
 
 export class Map {
-    constructor(mapData) {
+    constructor(mapData, collision) {
+        this.collision = collision;
+
         this.data = mapData.data;
         this.name = this.data.name;
 
@@ -38,6 +40,7 @@ export class Map {
         });
 
         this.layers.sort( (a, b) => a.z_index - b.z_index );
+        this.collision.colliders = this.colliders;
 
         delete this.data;
     }
@@ -56,10 +59,6 @@ export class Map {
                     ++row;
                 }
             });
-        });
-
-        this.colliders.forEach(collider => {
-            screen.strokeRect(collider.x1, collider.y1, collider.x2-collider.x1, collider.y2-collider.y1)
         });
     }
 

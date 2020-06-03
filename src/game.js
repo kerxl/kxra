@@ -7,8 +7,10 @@ import { GameController  }  from "./controllers/gameCtrl";
 import { SceneController }  from "./controllers/sceneCtrl";
 import { FPSController   }  from "./controllers/fpsController";
 
-import gameJSON from "./game.json";
 import { Player } from "./player/player";
+
+import gameJSON from "./game.json";
+import { Collision } from "./physic/collision";
 
 export class Game {
     constructor() {
@@ -20,6 +22,8 @@ export class Game {
         this.controller = new GameController();
 
         this.player = new Player(gameJSON.player);
+
+        this.collision = new Collision(this.player);
     }
 
     init() {
@@ -30,7 +34,7 @@ export class Game {
             new SceneController({ scenes: {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
                 startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
-                level_1:   new Level_1({ player: this.player, screen: this.screen, prop: gameJSON.scenes.level })
+                level_1:   new Level_1({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level })
             } }),
             new FPSController(gameJSON.fpsController)
         );

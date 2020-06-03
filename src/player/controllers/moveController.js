@@ -19,25 +19,25 @@ export class PlayerMoveController {
     }
 
     moveUp()    {
-        this.player.body.y -= this.player.moveSpeed;
+        this.player.body.y -= this.player.body.moveSpeed;
         this.isMove = true;
         this.direction = "up";
     }
 
     moveRight() {
-        this.player.body.x += this.player.moveSpeed;
+        this.player.body.x += this.player.body.moveSpeed;
         this.isMove = true;
         this.direction = "right";
     }
 
     moveDown()  {
-        this.player.body.y += this.player.moveSpeed;
+        this.player.body.y += this.player.body.moveSpeed;
         this.isMove = true;
         this.direction = "down";
     }
 
     moveLeft()  {
-        this.player.body.x -= this.player.moveSpeed;
+        this.player.body.x -= this.player.body.moveSpeed;
         this.isMove = true;
         this.direction = "left";
     }
