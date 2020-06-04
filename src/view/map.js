@@ -58,8 +58,8 @@ export class Map {
             layer.indexes.forEach(index => {
                 if (index > 0) {
                     if (layer.name == "wall" && this.collision.intersect({
-                        x1: this.tileSet.spriteWidth * col,    x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
-                        y1: this.tileSet.spriteHeight * row,   y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight-20
+                        x1: this.tileSet.spriteWidth * col-3,    x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
+                        y1: this.tileSet.spriteHeight * row,   y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight-20 // -20 for front walls
                     })) {
                         this.upperLayer.push({
                             sprite: this.tileSet.getSprite(index),
