@@ -6,6 +6,14 @@ export class Screen {
         this.height = height;
 
         this.canvas = new Canvas({ width: width, height: height });
+
+        this.camera = null;
+        this.isCameraSet = false;
+    }
+
+    setCamera(camera) {
+        this.camera = camera;
+        this.isCameraSet = true;
     }
 
     init() { this.canvas.init(); }
@@ -29,11 +37,16 @@ export class Screen {
     drawImage(image, x, y) { image && this.canvas.context.drawImage(image, x, y); }
     
     drawSprite(sprite, x, y) {
+        if(this.isCameraSet) {
+            x -= this.camera.x;
+            y -= this.camera.y;
+        }
+
         sprite.image && this.canvas.context.drawImage(
             sprite.image,
             sprite.sourceX, sprite.sourceY,
             sprite.width, sprite.height,
-            x || sprite.x || 0, y || sprite.y || 0,
+            x, y,
             sprite.width, sprite.height
         );
     }

@@ -7,7 +7,9 @@ export class Map {
         this.data = mapData.data;
         this.name = this.data.name;
 
-        
+        this.width  = this.data.width * this.data.tilewidth;
+        this.height = this.data.height * this.data.tileheight;
+
         this.tileSet = new SpriteSheet(mapData.tileSet);
 
         this.row    = this.data.height;
