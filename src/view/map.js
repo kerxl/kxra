@@ -10,12 +10,14 @@ export class Map {
         
         this.tileSet = new SpriteSheet(mapData.tileSet);
 
+        this.row    = this.data.height;
         this.column = this.data.width;
-        this.row = this.data.height;
 
-        this.layers = [];
+        this.layers    = [];
         this.colliders = [];
-        this.upperLayer = [];
+
+        this.defaultLayer = [];
+        this.upperLayer   = [];
     }
 
     init() {
@@ -27,11 +29,7 @@ export class Map {
     createLayers() {
         this.data.layers.forEach(layer => {
             if (layer.type == "tilelayer") {
-                this.layers.push({
-                    name:    layer.name,
-                    indexes: layer.data,
-                    z_index: layer.properties[0].value
-                });
+                this.layers.push({ name: layer.name, indexes: layer.data, z_index: layer.properties[0].value });
             } else if (layer.type == "objectgroup") {
                 this.colliders = layer.objects.map(item => ({
                     x1: item.x, x2: item.x + item.width,
@@ -58,22 +56,19 @@ export class Map {
             layer.indexes.forEach(index => {
                 if (index > 0) {
                     if (layer.name == "wall" && this.collision.intersect({
-                        x1: this.tileSet.spriteWidth * col-3,    x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
-                        y1: this.tileSet.spriteHeight * row,   y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight-20 // -20 for front walls
-                    })) {
+                            x1: this.tileSet.spriteWidth * col,  x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
+                            y1: this.tileSet.spriteHeight * row, y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight /2
+                        }))
+                    {
                         this.upperLayer.push({
                             sprite: this.tileSet.getSprite(index),
                             x: this.tileSet.spriteWidth * col,
                             y: this.tileSet.spriteHeight * row
-                        })
-                    } else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
+                        });
+                    } else
+                    screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
                 }
-
-                ++col;
-                if (col > this.column - 1) {
-                    col = 0;
-                    ++row;
-                }
+                (++col > this.column - 1) && ([col, row] = [0, row+1]);
             });
         });
     }
