@@ -14,7 +14,7 @@ export class EnemyMoveController {
         if (!this.isMove) return;
 
         if (this.body.x != this.currentMovePoint.x || this.body.y != this.currentMovePoint.y)
-            this.move()();
+            this.move();
         else if (this.currentMovePointIndex < this.movePoints.length-1) {
             this.currentMovePoint = this.movePoints[++this.currentMovePointIndex];
             
@@ -44,40 +44,17 @@ export class EnemyMoveController {
 
     move() {
         let a = this.body, b = this.currentMovePoint;
-
-        if (a.x == b.x && a.y > b.y) return this.moveUp.bind(this);
-        if (a.y == b.y && a.x < b.x) return this.moveRight.bind(this);
-        if (a.x == b.x && a.y < b.y) return this.moveDown.bind(this);
-        if (a.y == b.y && a.x > b.x) return this.moveLeft.bind(this);
-
-        return this.__strictMoveToPoint.bind(this);
-    }
-
-    __strictMoveToPoint() {
-        this.body.x = this.currentMovePoint.x;
-        this.body.y = this.currentMovePoint.y;
-        this.direction = "down";
+        
+        if (a.y > b.y) this.moveUp();
+        if (a.x < b.x) this.moveRight();
+        if (a.y < b.y) this.moveDown();
+        if (a.x > b.x) this.moveLeft();
     }
 
     movePointsReset() { this.movePoints.forEach(point => point.isPassed = false); }
 
-    moveUp()    {
-        this.body.y -= this.body.moveSpeed;
-        this.direction = "up";
-    }
-
-    moveRight() {
-        this.body.x += this.body.moveSpeed;
-        this.direction = "right";
-    }
-
-    moveDown()  {
-        this.body.y += this.body.moveSpeed;
-        this.direction = "down";
-    }
-
-    moveLeft()  {
-        this.body.x -= this.body.moveSpeed;
-        this.direction = "left";
-    }
+    moveUp()    { this.body.y -= this.body.moveSpeed; this.direction = "up";    }
+    moveRight() { this.body.x += this.body.moveSpeed; this.direction = "right"; }
+    moveDown()  { this.body.y += this.body.moveSpeed; this.direction = "down";  }
+    moveLeft()  { this.body.x -= this.body.moveSpeed; this.direction = "left";  }
 }
