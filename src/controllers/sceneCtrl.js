@@ -5,15 +5,14 @@ export class SceneController {
         this.scenes = {};
         for (let scene in scenes) {
             this.scenes[scene] = scenes[scene];
-            this.scenes[scene].init();
-            this.scenes[scene].isInitialized = true;
+            this.scenes[scene].isInitialized = false;
         }
     }
 
     init() {
         if (!this.scenes.loading) throw new Error("Game must have loading scene");
 
-        this.setScene("level_1");
+        this.setScene("loading");
     }
 
     setScene(sceneName) {

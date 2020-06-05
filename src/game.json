@@ -179,7 +179,7 @@
                 "spriteWidth": 64,
                 "spriteHeight": 64
             },
-            "level_2": {
+            "level_1": {
                 "mapData": {
                     "name": "map_1",
                     "compressionlevel":-1,
@@ -375,7 +375,7 @@
                     "width":10
                    }
             },
-            "level_1": {
+            "level_2": {
                 "mapData": {
                     "name": "map_2",
                     "compressionlevel":-1,
@@ -384,7 +384,7 @@
                         "export":
                             {
                             "format":"json",
-                            "target":"map_1.json"
+                            "target":"map_2.json"
                             }
                         },
                     "height":20,

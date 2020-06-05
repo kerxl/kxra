@@ -11,6 +11,7 @@ import { Player } from "./player/player";
 
 import gameJSON from "./game.json";
 import { Collision } from "./physic/collision";
+import { Level_2 } from "./view/scene/level/level_2";
 
 export class Game {
     constructor() {
@@ -34,7 +35,8 @@ export class Game {
             new SceneController({ scenes: {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
                 startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
-                level_1:   new Level_1({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level })
+                level_1:   new Level_1({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level }),
+                level_2:   new Level_2({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level })
             } }),
             new FPSController(gameJSON.fpsController)
         );
@@ -50,7 +52,5 @@ export class Game {
         this.init();
 
         (this.isRunning = true) && requestAnimationFrame(time => this.frame(time));
-
-        console.log(this);
     }
 }
