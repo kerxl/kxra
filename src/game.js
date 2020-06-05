@@ -37,7 +37,7 @@ export class Game {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
                 startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
                 level_1:   new Level_1({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_1 }),
-                level_2:   new Level_2({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_2 })
+                // level_2:   new Level_2({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_2 })
             } }),
             new FPSController(gameJSON.fpsController)
         );

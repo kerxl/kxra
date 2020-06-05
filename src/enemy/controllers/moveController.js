@@ -17,8 +17,8 @@ export class EnemyMoveController {
             this.move()();
         else if (this.currentMovePointIndex < this.movePoints.length-1) {
             this.currentMovePoint = this.movePoints[++this.currentMovePointIndex];
-            if (this.currentMovePoint.isStop)
-                this.stop();
+            
+            this.currentMovePoint.isStop && this.stop();
         }
         else
             this.moveRotate();
@@ -48,7 +48,15 @@ export class EnemyMoveController {
         if (a.x == b.x && a.y > b.y) return this.moveUp.bind(this);
         if (a.y == b.y && a.x < b.x) return this.moveRight.bind(this);
         if (a.x == b.x && a.y < b.y) return this.moveDown.bind(this);
-        if (a.y == b.y && a.x > b.y) return this.moveLeft.bind(this);
+        if (a.y == b.y && a.x > b.x) return this.moveLeft.bind(this);
+
+        return this.__strictMoveToPoint.bind(this);
+    }
+
+    __strictMoveToPoint() {
+        this.body.x = this.currentMovePoint.x;
+        this.body.y = this.currentMovePoint.y;
+        this.direction = "down";
     }
 
     movePointsReset() { this.movePoints.forEach(point => point.isPassed = false); }

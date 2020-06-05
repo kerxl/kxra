@@ -21,6 +21,6 @@ export class EnemtRangeZone {
     render(time, screen) {
         this.update(time);
         
-        // screen.strokeRect(this.x1, this.y1, this.x2-this.x1, this.y2-this.y1);
+        screen.strokeRect(this.x1, this.y1, this.x2-this.x1, this.y2-this.y1);
     }
 }

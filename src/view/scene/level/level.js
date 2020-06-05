@@ -10,7 +10,7 @@ export class Level extends Scene {
         this.map = new Map(prop, collision);
         this.player = player;
 
-        this.enemies = Object.values(prop.enemies).map(enemy => new Enemy(enemy));
+        this.enemies = prop.enemies.map(enemy => new Enemy(enemy));
 
         this.collision = collision;
     }
