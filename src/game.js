@@ -25,7 +25,7 @@ export class Game {
 
         this.player = new Player(gameJSON.player);
 
-        this.collision = new Collision(this.player);
+        this.collision = new Collision();
     }
 
     init() {

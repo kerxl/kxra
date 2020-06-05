@@ -437,7 +437,7 @@
                     "rangeZone": { "up": 64, "right": 64, "down": 64, "left": 64 },
                     "name": "Enemy_2",
                     "body": {
-                        "x": 100, "y": 500,
+                        "x": 100, "y": 520,
                         "width": 64, "height": 64,
                         "visible": false,
                         "moveSpeed": 1,
@@ -484,8 +484,8 @@
                     "controller": {
                         "moveController": {
                             "movePoints": [
-                                { "x": 200, "y": 500, "isStop": false },
-                                { "x": 100, "y": 500, "isStop": true,  "stopTime": 3000 }
+                                { "x": 200, "y": 520, "isStop": false },
+                                { "x": 100, "y": 520, "isStop": true,  "stopTime": 3000 }
                             ]
                         }
                     }

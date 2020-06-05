@@ -57,18 +57,22 @@ export class Map {
 
             layer.indexes.forEach(index => {
                 if (index > 0) {
-                    if (layer.name == "wall" && this.collision.intersect({
-                        x1: this.tileSet.spriteWidth * col,  x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
-                        y1: this.tileSet.spriteHeight * row, y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight /2
-                    }))
-                    {
-                        this.upperLayer.push({
-                            sprite: this.tileSet.getSprite(index),
-                            x: this.tileSet.spriteWidth * col,
-                            y: this.tileSet.spriteHeight * row
+                    if (layer.name == "wall") {
+                        this.collision.bodies.forEach( body => {
+                            let isIntersect = this.collision.intersect(body, {
+                                x1: this.tileSet.spriteWidth * col,  x2: this.tileSet.spriteWidth * col  + this.tileSet.spriteWidth,
+                                y1: this.tileSet.spriteHeight * row, y2: this.tileSet.spriteHeight * row + this.tileSet.spriteHeight /2
+                            });
+                            if (isIntersect)
+                                this.upperLayer.push({
+                                    sprite: this.tileSet.getSprite(index),
+                                    x: this.tileSet.spriteWidth * col,
+                                    y: this.tileSet.spriteHeight * row
+                                });
+                            else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
                         });
-                    } else
-                        screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
+                    }
+                else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
                 }
                 (++col > this.column - 1) && ([col, row] = [0, row+1]);
             });

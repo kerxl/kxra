@@ -20,6 +20,8 @@ export class Level extends Scene {
         this.player.controller.start();
 
         this.enemies.forEach(enemy => enemy.init());
+        this.collision.bodies.push(this.player.body);
+        this.collision.bodies.push(...this.enemies.map(enemy => enemy.body));
         
         this.camera = new Camera({
             width:  this.screen.width,
