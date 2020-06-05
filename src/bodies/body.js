@@ -1,6 +1,6 @@
 import { BoxCollider } from "./boxCollider";
 
-export class PlayerBody {
+export class Body {
     constructor(prop) {
         this.x = prop.x;
         this.y = prop.y;

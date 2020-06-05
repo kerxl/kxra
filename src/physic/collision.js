@@ -20,10 +20,10 @@ export class Collision {
             Math.abs(collider.y1 - box.y2), Math.abs(collider.y2 - box.y1) );
 
         switch(min) {
-            case Math.abs(collider.x1 - box.x2): this.player.body.x = collider.x1 - body.width + box._x; break;
-            case Math.abs(collider.x2 - box.x1): this.player.body.x = collider.x2 - box._x+2;            break;
-            case Math.abs(collider.y1 - box.y2): this.player.body.y = collider.y1 - body.height-2;       break;
-            case Math.abs(collider.y2 - box.y1): this.player.body.y = collider.y2 - box._y+2;            break;
+        case Math.abs(collider.x1 - box.x2): this.player.body.x = collider.x1 - body.width + box._x; break;
+        case Math.abs(collider.x2 - box.x1): this.player.body.x = collider.x2 - box._x+2;            break;
+        case Math.abs(collider.y1 - box.y2): this.player.body.y = collider.y1 - body.height-2;       break;
+        case Math.abs(collider.y2 - box.y1): this.player.body.y = collider.y2 - box._y+2;            break;
         }
     }
 

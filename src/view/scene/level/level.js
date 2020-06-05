@@ -1,13 +1,16 @@
 import { Scene } from "../scene";
 import { Map } from "../../map";
 import { Camera } from "../../camera";
+import { Enemy } from "../../../enemy/enemy";
 
 export class Level extends Scene {
-    constructor({ name = "level", screen, player, collision, mapData, parent = "none", next = "none" }) {
+    constructor({ name = "level", screen, player, collision, prop, parent = "none", next = "none" }) {
         super({ name: name, screen: screen, parent: parent, next: next });
 
-        this.map = new Map(mapData, collision);
+        this.map = new Map(prop, collision);
         this.player = player;
+
+        this.enemies = Object.values(prop.enemies).map(enemy => new Enemy(enemy));
 
         this.collision = collision;
     }
@@ -15,6 +18,8 @@ export class Level extends Scene {
     init() {
         this.map.init();
         this.player.controller.start();
+
+        this.enemies.forEach(enemy => enemy.init());
         
         this.camera = new Camera({
             width:  this.screen.width,
@@ -40,7 +45,10 @@ export class Level extends Scene {
         this.update(time);
 
         this.map.render(this.screen);
+
+        this.enemies.forEach(enemy => enemy.render(time, this.screen));
         this.player.render(time, this.screen);
+
         this.map.secondRender(this.screen);
 
         super.render(time);

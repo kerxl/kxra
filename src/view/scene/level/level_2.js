@@ -6,10 +6,7 @@ export class Level_2 extends Level {
             name: name,
             screen: screen,
             player: player,
-            mapData: {
-                data: prop.level_2.mapData,
-                tileSet: prop.mapSpriteSheet
-            },
+            prop: prop,
             collision: collision,
             parent: parent,
             next: next

@@ -1,31 +1,17 @@
-import { PlayerBody } from "./components/body";
-import { PlayerView } from "./components/view";
 import { PlayerController } from "./controllers/playerController";
+import { Character } from "../bodies/character";
 
-export class Player {
+export class Player extends Character {
     constructor(prop) {
+        super(prop);
         this.name = prop.name;
-
-        this.body = new PlayerBody(prop.body);
-        this.view = new PlayerView(prop.view);
 
         this.controller = new PlayerController({ player: this, prop: prop.controller });
     }
 
-    init() {
-        this.view.init();
-        this.body.init();
-    }
-
     update(time) {
         this.controller.update(time);
-        this.body.update();
-    }
 
-    render(time, screen) {
-        this.update(time);
-
-        screen.drawSprite(this.view.getSprite(), this.body.x, this.body.y);
-        this.body.render(screen);
+        super.update();
     }
 }

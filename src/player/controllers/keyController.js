@@ -12,7 +12,7 @@ export class PlayerKeyController {
             ArrowLeft:  { code: 37, isDown: false },
 
             Space: { code: 32, isDown: false },
-        }
+        };
 
         this.isKeyDown = false;
     }

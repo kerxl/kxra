@@ -1,6 +1,6 @@
 import { PlayerKeyController } from "./keyController";
 import { PlayerMoveController } from "./moveController";
-import { PlayerAnimationController } from "./animationController";
+import { BodyAnimation } from "../../bodies/animation";
 
 export class PlayerController {
     constructor({ player, prop }) {
@@ -8,7 +8,7 @@ export class PlayerController {
 
         this.keyController = new PlayerKeyController();
         this.moveController = new PlayerMoveController(this.player, this.keyController, prop.moveController);
-        this.animationController = new PlayerAnimationController(this.player.view, this.moveController);
+        this.animationController = new BodyAnimation(this.player.view, this.moveController);
     }
 
     start() { this.keyController.start(); }

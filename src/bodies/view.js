@@ -1,7 +1,7 @@
-import { SpriteSheet } from "../../view/picture/spriteSheet";
-import { SpriteAnimation } from "../../view/animation/spriteAnimation";
+import { SpriteSheet } from "../view/picture/spriteSheet";
+import { SpriteAnimation } from "../view/animation/spriteAnimation";
 
-export class PlayerView {
+export class View {
     constructor(prop) {
         this.spriteSheet = new SpriteSheet(prop.spriteSheet);
 
@@ -16,14 +16,14 @@ export class PlayerView {
 
         this.tempAnimationProp.forEach(animation => {
             this.animationList[animation.name] = new SpriteAnimation({
-                                                    name:        animation.name,
-                                                    spriteSheet: this.spriteSheet,
-                                                    frameDelay:  animation.frameDelay,
-                                                    indices:     animation.indices,
-                                                    repeat:      animation.repeat,
-                                                    autorun:     animation.autorun 
-                                                });
-                this.animationList[animation.name].init()
+                name:        animation.name,
+                spriteSheet: this.spriteSheet,
+                frameDelay:  animation.frameDelay,
+                indices:     animation.indices,
+                repeat:      animation.repeat,
+                autorun:     animation.autorun 
+            });
+            this.animationList[animation.name].init();
         }); delete this.tempAnimationProp;
         
         this.animation = this.animationList["idle-down"];

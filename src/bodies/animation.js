@@ -1,4 +1,4 @@
-export class PlayerAnimationController {
+export class BodyAnimation {
     constructor(view, moveController) {
         this.view = view;
         this.moveController = moveController;
