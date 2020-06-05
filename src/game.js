@@ -2,16 +2,17 @@ import { Screen       } from "./view/screen/screen";
 import { LoadingScene } from "./view/scene/loading";
 import { StartMenu }    from "./view/scene/menu/start";
 import { Level_1 }      from "./view/scene/level/level_1";
+import { Level_2 } from "./view/scene/level/level_2";
 
 import { GameController  }  from "./controllers/gameCtrl";
 import { SceneController }  from "./controllers/sceneCtrl";
 import { FPSController   }  from "./controllers/fpsController";
 
+import { Collision } from "./physic/collision";
+
 import { Player } from "./player/player";
 
 import gameJSON from "./game.json";
-import { Collision } from "./physic/collision";
-import { Level_2 } from "./view/scene/level/level_2";
 
 export class Game {
     constructor() {
@@ -36,7 +37,7 @@ export class Game {
                 loading:   new LoadingScene({ screen: this.screen, prop: gameJSON.scenes.loading }),
                 startMenu: new StartMenu({ screen: this.screen, prop: gameJSON.scenes.startMenu }),
                 level_1:   new Level_1({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_1 }),
-                // level_2:   new Level_2({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_2 })
+                level_2:   new Level_2({ player: this.player, screen: this.screen, collision: this.collision, prop: gameJSON.scenes.level_2 })
             } }),
             new FPSController(gameJSON.fpsController)
         );

@@ -824,13 +824,12 @@
             "enemies": {
                 "enemy_1": {
                     "rangeZone": { "up": 128, "right": 64, "down": 128, "left": 64 },
-                    "spawnPoint": { "x": 500, "y": 400 },
                     "name": "Enemy_1",
                     "body": {
                         "x": 500, "y": 400,
                         "width": 64, "height": 64,
                         "visible": false,
-                        "moveSpeed": 3,
+                        "moveSpeed": 1,
                         "boxCollider": {
                             "x": 14, "y": 45,
                             "width": 36, "height": 19,
@@ -870,6 +869,16 @@
                             
                             { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
                         ]
+                    },
+                    "controller": {
+                        "moveController": {
+                            "movePoints": [
+                                { "x": 500, "y": 450, "isStop": true, "stopTime": 3000 },
+                                { "x": 450, "y": 450, "isStop": false },
+                                { "x": 450, "y": 200, "isStop": false },
+                                { "x": 500, "y": 200, "isStop": true , "stopTime": 3000 }
+                            ]
+                        }
                     }
                 }
             }

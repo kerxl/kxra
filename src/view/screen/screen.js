@@ -37,17 +37,31 @@ export class Screen {
     drawImage(image, x, y) { image && this.canvas.context.drawImage(image, x, y); }
     
     drawSprite(sprite, x, y) {
+        let spriteX = x;
+        let spriteY = y;
+
         if(this.isCameraSet) {
-            x -= this.camera.x;
-            y -= this.camera.y;
+            spriteX -= this.camera.x;
+            spriteY -= this.camera.y;
         }
+
+        if ((spriteX >= this.width)          ||
+            (spriteY >= this.height)         ||
+            ((spriteX + sprite.width)  <= 0) ||
+            ((spriteY + sprite.height) <= 0)
+        ) return;
+
+        let sourceX = sprite.sourceX + Math.abs(Math.min(0, spriteX));
+        let sourceY = sprite.sourceY + Math.abs(Math.min(0, spriteY));
+        let width = Math.min(this.width, spriteX + sprite.width) - Math.max(0, spriteX);
+        let height = Math.min(this.height, spriteY + sprite.height) - Math.max(0, spriteY);
 
         sprite.image && this.canvas.context.drawImage(
             sprite.image,
-            sprite.sourceX, sprite.sourceY,
-            sprite.width, sprite.height,
-            x, y,
-            sprite.width, sprite.height
+            sourceX, sourceY,
+            width, height,
+            Math.max(0, spriteX), Math.max(0, spriteY),
+            width, height
         );
     }
 
