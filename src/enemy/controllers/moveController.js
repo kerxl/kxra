@@ -1,17 +1,19 @@
 export class EnemyMoveController {
-    constructor(body, prop) {
+    constructor(body, attackController, prop) {
         this.body = body;
+        this.attackController = attackController;
         
-        this.movePoints = prop.movePoints;
         this.currentMovePointIndex = 0;
-        this.currentMovePoint = this.movePoints[this.currentMovePointIndex];
+        (this.movePoints = prop.movePoints) && (this.currentMovePoint = this.movePoints[this.currentMovePointIndex]);
 
         this.isMove = true;
         this.direction = "down";
     }
 
     update() {
-        if (!this.isMove) return;
+        if (this.attackController.target) this.start();
+        
+        if (!this.isMove || !this.movePoints) return;
 
         if (this.body.x != this.currentMovePoint.x || this.body.y != this.currentMovePoint.y)
             this.move();
@@ -43,7 +45,9 @@ export class EnemyMoveController {
     }
 
     move() {
-        let a = this.body, b = this.currentMovePoint;
+        let a = this.body, b = this.attackController.target ? {
+            x: this.attackController.target.body.boxCollider.x, y: this.attackController.target.body.boxCollider.y
+        } : this.currentMovePoint;
         
         if (a.y > b.y) this.moveUp();
         if (a.x < b.x) this.moveRight();

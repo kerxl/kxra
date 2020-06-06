@@ -13,14 +13,17 @@ export class Enemy extends Character {
         this.controller = new EnemyController(this, prop.controller);
     }
 
-    init() {
+    init(player, collision) {
         super.init();
         this.rangeZone.init();
+        this.controller.init(player, collision);
     }
 
     update(time) {
         this.controller.update(time);
         super.update();
+
+        this.body.moveSpeed = this.controller.attackController.target ? 2 : 1;
     }
 
     render(time, screen) {

@@ -35,8 +35,8 @@ export class Collision {
 
     intersect(body, collider) {
         let box = {
-            x1: body.boxCollider.x, x2: body.boxCollider.x + body.boxCollider.width,
-            y1: body.boxCollider.y, y2: body.boxCollider.y + body.boxCollider.height
+            x1: body.x1 || body.boxCollider.x, x2: body.x2 || body.boxCollider.x + body.boxCollider.width,
+            y1: body.y1 || body.boxCollider.y, y2: body.y2 || body.boxCollider.y + body.boxCollider.height
         };
         
         return (box.x2 >  collider.x1 && box.x1 <  collider.x1 && box.y2 >  collider.y1 && box.y1 <  collider.y2) ||
