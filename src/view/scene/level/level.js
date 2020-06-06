@@ -2,6 +2,7 @@ import { Scene } from "../scene";
 import { Map } from "../../map";
 import { Camera } from "../../camera";
 import { Enemy } from "../../../enemy/enemy";
+import { Sprite } from "../../picture/sprite";
 
 export class Level extends Scene {
     constructor({ name = "level", screen, player, collision, prop, parent = "none", next = "none" }) {
@@ -13,6 +14,15 @@ export class Level extends Scene {
         this.enemies = prop.enemies.map(enemy => new Enemy(enemy));
 
         this.collision = collision;
+
+        this.interface = {
+            healthPoints: {
+                sprite: new Sprite(prop.interface.healthPoints.sprite),
+                x: prop.interface.healthPoints.x,
+                y: prop.interface.healthPoints.y,
+                count: prop.interface.healthPoints.count
+            }
+        }
     }
 
     init() {
@@ -32,12 +42,15 @@ export class Level extends Scene {
 
         this.screen.setCamera(this.camera);
 
+        this.interface.healthPoints.sprite.init();
+
         super.init();
     }
 
     update(time) {
         this.collision.update();
         this.camera.update();
+        this.interface.healthPoints.count = this.player.healthPoint;
 
         super.update(time);
     }
@@ -53,5 +66,10 @@ export class Level extends Scene {
         this.map.secondRender(this.screen);
 
         super.render(time);
+
+        for (let i = 0; i < this.interface.healthPoints.count; ++i) {
+            let x = this.interface.healthPoints.x + i * this.interface.healthPoints.sprite.width;
+            this.screen.drawImage(this.interface.healthPoints.sprite.image, x, this.interface.healthPoints.y);
+        }
     }
 }

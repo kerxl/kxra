@@ -171,6 +171,18 @@
             }
         },
         "level_1": {
+            "interface": {
+                "healthPoints": {
+                    "sprite": {
+                        "src": "./img/tile-sets/heart.png",
+                        "width": 64,
+                        "height": 64
+                    },
+                    "x": 20,
+                    "y": 556,
+                    "count": 3
+                }
+            },
             "mapSpriteSheet": {
                 "name": "level_1MapSpriteSheet",
                 "src": "./img/tile-sets/map.png",
