@@ -66,7 +66,7 @@ export class Screen {
     }
 
     strokeRect(x, y, width, height) {
-        this.canvas.context.strokeRect(x, y, width, height);
+        this.canvas.context.strokeRect(x - this.camera.x, y - this.camera.y, width, height);
     }
 
     fill(color) {

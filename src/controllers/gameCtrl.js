@@ -1,12 +1,12 @@
 export class GameController {
     constructor() { this.length = 0; }
 
-    update() {
-        this.sceneController && this.sceneController.update();
+    update(time) {
+        this.sceneController && this.sceneController.update(time);
     }
 
     render(time, screen) {
-        this.update();
+        this.update(time);
 
         this.sceneController && this.sceneController.currentScene.render(time, screen);
         this.fpsController   && this.fpsController.render(time, screen);
