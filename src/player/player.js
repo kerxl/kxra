@@ -5,6 +5,7 @@ export class Player extends Character {
     constructor(prop) {
         super(prop);
         this.name = prop.name;
+        this.healthPoint = 3;
 
         this.controller = new PlayerController({ player: this, prop: prop.controller });
     }

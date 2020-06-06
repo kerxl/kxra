@@ -381,7 +381,8 @@
                         "x": 500, "y": 400,
                         "width": 64, "height": 64,
                         "visible": false,
-                        "moveSpeed": 1,
+                        "defaultSpeed": 1,
+                        "aggressiveSpeed": 2,
                         "boxCollider": {
                             "x": 14, "y": 45,
                             "width": 36, "height": 19,
@@ -440,7 +441,8 @@
                         "x": 100, "y": 300,
                         "width": 64, "height": 64,
                         "visible": false,
-                        "moveSpeed": 1,
+                        "defaultSpeed": 1,
+                        "aggressiveSpeed": 2,
                         "boxCollider": {
                             "x": 14, "y": 45,
                             "width": 36, "height": 19,

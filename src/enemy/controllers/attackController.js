@@ -1,5 +1,5 @@
 export class EnemyAttackController {
-    constructor(range, body, prop) {
+    constructor(range, body) {
         this.range = range;
         this.body = body;
 
@@ -33,5 +33,20 @@ export class EnemyAttackController {
         if (this.collision.intersect(this.playerBox, this.range))
             this.target = this.player;
         else this.target = null;
+    }
+
+    hit(direction) {
+        switch(direction) {
+            case "up":    this.player.body.y -= 20; break;
+            case "right": this.player.body.x += 20; break;
+            case "down":  this.player.body.y += 20; break;
+            case "left":  this.player.body.x -= 20; break;
+        }
+    }
+
+    attack(direction) {
+        --this.player.healthPoint;
+
+        this.hit(direction);
     }
 }

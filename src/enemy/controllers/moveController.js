@@ -11,8 +11,16 @@ export class EnemyMoveController {
     }
 
     update() {
-        if (this.attackController.target) this.start();
-        
+        if (this.isStrictStopped) return;
+        if (this.attackController.target) {
+            this.start();
+            
+            if (this.attackController.collision.intersect(this.attackController.playerBox, this.attackController.selfBox)) {
+                this.attackController.attack(this.direction);
+                this.strictStop(1000);
+            }
+        }
+
         if (!this.isMove || !this.movePoints) return;
 
         if (this.body.x != this.currentMovePoint.x || this.body.y != this.currentMovePoint.y)
@@ -20,19 +28,25 @@ export class EnemyMoveController {
         else if (this.currentMovePointIndex < this.movePoints.length-1) {
             this.currentMovePoint = this.movePoints[++this.currentMovePointIndex];
             
-            this.currentMovePoint.isStop && this.stop();
+            this.currentMovePoint.isStop && this.stop(this.currentMovePoint.stopTime);
         }
         else
             this.moveRotate();
     }
 
-    start() { this.isMove = true; }
+    start() { !this.isStrictStopped && (this.isMove = true); }
 
-    stop() {
+    stop(time) {
         this.isMove = false;
         setTimeout(() => {
+            this.isStrictStopped = false;
             this.start();
-        }, this.currentMovePoint.stopTime);
+        }, time);
+    }
+
+    strictStop(time) {
+        this.isStrictStopped = true;
+        this.stop(time);
     }
 
     moveRotate() {
@@ -46,7 +60,7 @@ export class EnemyMoveController {
 
     move() {
         let a = this.body, b = this.attackController.target ? {
-            x: this.attackController.target.body.boxCollider.x, y: this.attackController.target.body.boxCollider.y
+            x: this.attackController.target.body.x, y: this.attackController.target.body.y
         } : this.currentMovePoint;
         
         if (a.y > b.y) this.moveUp();

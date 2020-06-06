@@ -1,4 +1,4 @@
-export class EnemtRangeZone {
+export class EnemyRangeZone {
     constructor(body, prop) {
         this.body = body;
 
