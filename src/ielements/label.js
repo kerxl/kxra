@@ -25,9 +25,9 @@ export class Label extends IElement {
         });
     }
 
-    render(time, screen) {
+    render(time, screen, camera = false) {
         this.update(time);
            
-        screen.drawLabel(this);
+        screen.drawLabel(this, camera);
     }
 }

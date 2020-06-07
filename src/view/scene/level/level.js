@@ -63,7 +63,7 @@ export class Level extends Scene {
     update(time) {
         this.collision.update();
         this.camera.update();
-        this.controller.update(time, this.player.healthPoint, this.enemiesCount);
+        this.controller.update(time, this.player.healthPoint, this.enemies.length);
         this.interface.update(this.player.healthPoint, this.controller.getTimeLabel(time, this.interface.timeLabel.text));
 
         this.enemies.forEach((enemy, index) => {

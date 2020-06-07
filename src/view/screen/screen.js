@@ -27,11 +27,14 @@ export class Screen {
         this.drawLabel(button.label);
     }
 
-    drawLabel(label) {
+    drawLabel(label, camera = false) {
         this.canvas.context.fillStyle = label.color;
         this.canvas.context.font = `${label.fontWeight} ${label.fontSize}px ${label.fontFamily || "Lucida Consolas"}`;
 
-        this.canvas.context.fillText(label.text, label.x, label.y);
+        if (!camera)
+            this.canvas.context.fillText(label.text, label.x, label.y);
+        else
+            this.canvas.context.fillText(label.text, label.x - this.camera.x, label.y - this.camera.y);
     }
 
     drawImage(image, x, y) { image && this.canvas.context.drawImage(image, x, y); }
@@ -65,9 +68,7 @@ export class Screen {
         );
     }
 
-    strokeRect(x, y, width, height) {
-        this.canvas.context.strokeRect(x - this.camera.x, y - this.camera.y, width, height);
-    }
+    strokeRect(x, y, width, height) { this.canvas.context.strokeRect(x - this.camera.x, y - this.camera.y, width, height); }
 
     fill(color) {
         this.canvas.context.fillStyle = color;

@@ -6,11 +6,8 @@ export class BodyAnimation {
     }
     
     update(time) {
-        if (this.attackController && this.attackController.attack.isAttacked && !this.view.animation.isRunning) {
+        if (this.attackController && this.attackController.attack.isAttacked && !this.view.animation.isRunning)
             this.attackController.attack.isAttacked = false;
-            console.log("qwe")
-            // this.view.setAnimation( (this.moveController.isMove ? "walk-" : "idle-") + this.moveController.direction );
-        }
 
         if (this.attackController && !this.attackController.attack.isAttacked)
             this.view.setAnimation( (this.moveController.isMove ? "walk-" : "idle-") + this.moveController.direction );

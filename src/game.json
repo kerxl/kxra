@@ -432,7 +432,7 @@
                     "view": {
                         "spriteSheet": {
                             "name": "playerSpriteSheet",
-                            "src": "./img/tile-sets/player.png",
+                            "src": "./img/tile-sets/orc.png",
                             "width": 832,
                             "height": 1344,
                             "spriteWidth": 64,
@@ -501,7 +501,7 @@
                     "view": {
                         "spriteSheet": {
                             "name": "playerSpriteSheet",
-                            "src": "./img/tile-sets/player.png",
+                            "src": "./img/tile-sets/skeleton.png",
                             "width": 832,
                             "height": 1344,
                             "spriteWidth": 64,
@@ -528,7 +528,7 @@
                             { "name": "attack-down",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 20, "repeat": false, "autorun": false},
                             { "name": "attack-left",  "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 20, "repeat": false, "autorun": false},
                             
-                            { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
+                            { "name": "dead",  "indices": [261, 262, 263, 264, 265, 266], "frameDelay": 100, "repeat": false, "autorun": false }
                         ]
                     },
                     "controller": {
@@ -1016,7 +1016,16 @@
             },
             "enemies": [
                 {
-                    "rangeZone": { "up": 64, "right": 64, "down": 64, "left": 64 },
+                    "healthPoint": 15,
+                    "healthPointLabel": {
+                        "name": "timeLabel",
+                        "text": "15",
+                        "color": "#FFFFFF",
+                        "fontWeight": "bold",
+                        "fontSize": 14,
+                        "fontFamily": "Do Hyeon"
+                    },
+                    "rangeZone": { "up": 128, "right": 128, "down": 128, "left": 128 },
                     "name": "Enemy_1",
                     "body": {
                         "x": 500, "y": 80,
@@ -1033,7 +1042,7 @@
                     "view": {
                         "spriteSheet": {
                             "name": "playerSpriteSheet",
-                            "src": "./img/tile-sets/player.png",
+                            "src": "./img/tile-sets/orc.png",
                             "width": 832,
                             "height": 1344,
                             "spriteWidth": 64,
@@ -1074,7 +1083,16 @@
                     }
                 },
                 {
-                    "rangeZone": { "up": 64, "right": 64, "down": 64, "left": 64 },
+                    "healthPoint": 15,
+                    "healthPointLabel": {
+                        "name": "timeLabel",
+                        "text": "15",
+                        "color": "#FFFFFF",
+                        "fontWeight": "bold",
+                        "fontSize": 14,
+                        "fontFamily": "Do Hyeon"
+                    },
+                    "rangeZone": { "up": 128, "right": 128, "down": 128, "left": 128 },
                     "name": "Enemy_2",
                     "body": {
                         "x": 500, "y": 300,
@@ -1091,7 +1109,7 @@
                     "view": {
                         "spriteSheet": {
                             "name": "playerSpriteSheet",
-                            "src": "./img/tile-sets/player.png",
+                            "src": "./img/tile-sets/skeleton.png",
                             "width": 832,
                             "height": 1344,
                             "spriteWidth": 64,

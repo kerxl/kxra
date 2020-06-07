@@ -40,6 +40,6 @@ export class Enemy extends Character {
         super.render(time, screen);
 
         this.rangeZone.render(time, screen);
-        this.healthPointLabel.render(time, screen);
+        this.healthPointLabel.render(time, screen, true);
     }
 }
