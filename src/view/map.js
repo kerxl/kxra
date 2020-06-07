@@ -72,7 +72,7 @@ export class Map {
                             else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
                         });
                     }
-                else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
+                    else screen.drawSprite(this.tileSet.getSprite(index), this.tileSet.spriteWidth * col, this.tileSet.spriteHeight * row);
                 }
                 (++col > this.column - 1) && ([col, row] = [0, row+1]);
             });

@@ -19,7 +19,7 @@ export class LevelController {
         if (this.playerHP == 0 || this.levelTime.all == 0) {
             this.level.status = "finish";
             this.level.next = "startMenu";
-        } else if (this.enemiesCount == 0) this.level.status = "finish"
+        } else if (this.enemiesCount == 0) this.level.status = "finish";
     }
 
     getTimeLabel(time, prevStr) {

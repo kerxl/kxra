@@ -37,10 +37,10 @@ export class EnemyAttackController {
 
     hit(direction) {
         switch(direction) {
-            case "up":    this.player.body.y -= 20; break;
-            case "right": this.player.body.x += 20; break;
-            case "down":  this.player.body.y += 20; break;
-            case "left":  this.player.body.x -= 20; break;
+        case "up":    this.player.body.y -= 20; break;
+        case "right": this.player.body.x += 20; break;
+        case "down":  this.player.body.y += 20; break;
+        case "left":  this.player.body.x -= 20; break;
         }
     }
 

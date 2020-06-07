@@ -6,6 +6,7 @@ export class EnemyRangeZone {
         this.right = prop.right;
         this.down = prop.down;
         this.left = prop.left;
+        this.visible = prop.visible;
     }
 
     setPosition() {
@@ -21,6 +22,6 @@ export class EnemyRangeZone {
     render(time, screen) {
         this.update(time);
         
-        // screen.strokeRect(this.x1, this.y1, this.x2-this.x1, this.y2-this.y1);
+        this.visible && screen.strokeRect(this.x1, this.y1, this.x2-this.x1, this.y2-this.y1);
     }
 }

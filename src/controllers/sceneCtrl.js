@@ -15,10 +15,10 @@ export class SceneController {
         if (!this.scenes[sceneName]) return;
 
         switch(sceneName) {
-            case "startMenu": this.currentScene = new StartMenu(this.scenes.startMenu);      break;
-            case "level_1":   this.currentScene = new Level(this.scenes.level_1);            break;
-            case "level_2":   this.currentScene = new Level(this.scenes.level_2);            break;
-            default:          this.currentScene = new LoadingScene(this.scenes.loading);     break;
+        case "startMenu": this.currentScene = new StartMenu(this.scenes.startMenu);      break;
+        case "level_1":   this.currentScene = new Level(this.scenes.level_1);            break;
+        case "level_2":   this.currentScene = new Level(this.scenes.level_2);            break;
+        default:          this.currentScene = new LoadingScene(this.scenes.loading);     break;
         }
 
         this.currentScene.init();
