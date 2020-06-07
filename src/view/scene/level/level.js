@@ -37,6 +37,9 @@ export class Level extends Scene {
     }
 
     init() {
+        this.player.controller.attackController.attack.setEnemies(this.enemies);
+        this.player.controller.attackController.attack.setCollision(this.collision);
+
         this.map.init();
         this.player.init();
         this.interface.init();
@@ -62,6 +65,12 @@ export class Level extends Scene {
         this.camera.update();
         this.controller.update(time, this.player.healthPoint, this.enemiesCount);
         this.interface.update(this.player.healthPoint, this.controller.getTimeLabel(time, this.interface.timeLabel.text));
+
+        this.enemies.forEach((enemy, index) => {
+            if (enemy.healthPoint <= 0) {
+                this.enemies.splice(index, 1);
+            }
+        }); 
 
         super.update(time);
     }

@@ -15,7 +15,7 @@ export class PlayerMoveController {
         if (this.keyController.keys[this.keys.down].isDown)  this.moveDown(); 
         if (this.keyController.keys[this.keys.left].isDown)  this.moveLeft();
         
-        if (!this.keyController.isKeyDown) this.isMove = false;
+        if (!this.keyController.isKeyMoveDown) this.isMove = false;
     }
 
     moveUp()    {

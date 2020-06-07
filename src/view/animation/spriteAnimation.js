@@ -27,7 +27,10 @@ export class SpriteAnimation extends Animation {
     nextFrame() {
         if ((this.currentFrameIndex + 1 == this.frames.length ) && this.repeat)
             this.currentFrameIndex = 0;
-        else if (!this.repeat) stop();
+        else if ((this.currentFrameIndex + 1 == this.frames.length ) && !this.repeat) {
+            this.currentFrameIndex = 0;
+            this.stop();
+        }
         else ++this.currentFrameIndex;
     }
 }

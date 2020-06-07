@@ -1,5 +1,5 @@
 import { PlayerController } from "./controllers/playerController";
-import { Character } from "../bodies/character";
+import { Character        } from "../bodies/character";
 
 export class Player extends Character {
     constructor(prop) {

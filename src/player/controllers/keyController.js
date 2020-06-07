@@ -6,15 +6,16 @@ export class PlayerKeyController {
             KeyS: { code: 83, isDown: false },
             KeyA: { code: 65, isDown: false },
 
+            Space: { code: 32, isDown: false },
+            
             ArrowUp:    { code: 38, isDown: false },
             ArrowRight: { code: 39, isDown: false },
             ArrowDown:  { code: 40, isDown: false },
-            ArrowLeft:  { code: 37, isDown: false },
-
-            Space: { code: 32, isDown: false },
+            ArrowLeft:  { code: 37, isDown: false }
         };
 
-        this.isKeyDown = false;
+        this.isKeyMoveDown = false;
+        this.isKeyAttackDown = false;
     }
 
     start() { this.startEventListen(); }
@@ -33,7 +34,13 @@ export class PlayerKeyController {
         this._listenerKeyUp   && window.removeEventListener("keyup",   this._listenerKeyUp)   && delete this._listenerKeyUp;
     }
 
-    update() { this.isKeyDown = this.keys.KeyW.isDown || this.keys.KeyD.isDown || this.keys.KeyS.isDown || this.keys.KeyA.isDown; }
+    update() {
+        this.isKeyMoveDown =
+            this.keys.KeyW.isDown || this.keys.KeyD.isDown || this.keys.KeyS.isDown || this.keys.KeyA.isDown;
+            
+        this.isKeyAttackDown =
+            this.keys.ArrowUp.isDown || this.keys.ArrowRight.isDown || this.keys.ArrowDown.isDown || this.keys.ArrowLeft.isDown;
+    }
 
     keyDownHandler(event) {
         if (this.keys[event.code]) {

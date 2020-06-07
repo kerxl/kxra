@@ -2,7 +2,6 @@ export class LevelUI {
     constructor(prop) {
         this.healthPoints = prop.healthPoints;
         this.timeLabel = prop.timeLabel;
-        console.log(this);
     }
 
     init() {

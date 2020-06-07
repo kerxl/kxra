@@ -116,7 +116,7 @@
         },
         "level_1": {
             "next": "level_2",
-            "time": 6,
+            "time": 46,
             "player": {
                 "name": "Kxra",
                 "body": {
@@ -155,10 +155,10 @@
                         { "name": "spell_cast-down",  "indices": [27, 28, 29, 30, 31, 32, 33], "frameDelay": 50, "repeat": false, "autorun": false},
                         { "name": "spell_cast-left",  "indices": [14, 15, 16, 17, 18, 19, 20], "frameDelay": 50, "repeat": false, "autorun": false},
         
-                        { "name": "attack-up",    "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-right", "indices": [209, 210, 211, 212, 213, 214], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-down",  "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-left",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 40, "repeat": false, "autorun": false},
+                        { "name": "attack-up",    "indices": [157, 158, 159, 160, 161, 162], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-right", "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-down",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-left",  "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 20, "repeat": false, "autorun": false},
         
                         
                         { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
@@ -167,6 +167,13 @@
                 "controller": {
                     "moveController": {
                         "keys": { "up": "KeyW", "right": "KeyD", "down": "KeyS", "left": "KeyA" }
+                    },
+                    "attackController": {
+                        "keys": { "up": "ArrowUp", "right": "ArrowRight", "down": "ArrowDown", "left": "ArrowLeft" },
+                        "warrior": {
+                            "damage": 5,
+                            "cooldown": 1
+                        }
                     },
                     "animationController": {
                         "name": "playerAnimation"
@@ -399,7 +406,16 @@
             },
             "enemies": [
                 {
-                    "rangeZone": { "up": 64, "right": 64, "down": 64, "left": 64 },
+                    "healthPoint": 15,
+                    "healthPointLabel": {
+                        "name": "timeLabel",
+                        "text": "15",
+                        "color": "#FFFFFF",
+                        "fontWeight": "bold",
+                        "fontSize": 14,
+                        "fontFamily": "Do Hyeon"
+                    },
+                    "rangeZone": { "up": 128, "right": 128, "down": 128, "left": 128 },
                     "name": "Enemy_1",
                     "body": {
                         "x": 500, "y": 400,
@@ -438,11 +454,11 @@
                             { "name": "spell_cast-down",  "indices": [27, 28, 29, 30, 31, 32, 33], "frameDelay": 50, "repeat": false, "autorun": false},
                             { "name": "spell_cast-left",  "indices": [14, 15, 16, 17, 18, 19, 20], "frameDelay": 50, "repeat": false, "autorun": false},
             
-                            { "name": "attack-up",    "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-right", "indices": [209, 210, 211, 212, 213, 214], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-down",  "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-left",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 40, "repeat": false, "autorun": false},
-            
+                            { "name": "attack-up",    "indices": [157, 158, 159, 160, 161, 162], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-right", "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-down",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-left",  "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 20, "repeat": false, "autorun": false},
+                        
                             
                             { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
                         ]
@@ -459,7 +475,16 @@
                     }
                 },
                 {
-                    "rangeZone": { "up": 64, "right": 64, "down": 64, "left": 64 },
+                    "healthPoint": 15,
+                    "healthPointLabel": {
+                        "name": "timeLabel",
+                        "text": "15",
+                        "color": "#FFFFFF",
+                        "fontWeight": "bold",
+                        "fontSize": 14,
+                        "fontFamily": "Do Hyeon"
+                    },
+                    "rangeZone": { "up": 128, "right": 128, "down": 128, "left": 128 },
                     "name": "Enemy_2",
                     "body": {
                         "x": 100, "y": 300,
@@ -498,11 +523,10 @@
                             { "name": "spell_cast-down",  "indices": [27, 28, 29, 30, 31, 32, 33], "frameDelay": 50, "repeat": false, "autorun": false},
                             { "name": "spell_cast-left",  "indices": [14, 15, 16, 17, 18, 19, 20], "frameDelay": 50, "repeat": false, "autorun": false},
             
-                            { "name": "attack-up",    "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-right", "indices": [209, 210, 211, 212, 213, 214], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-down",  "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 40, "repeat": false, "autorun": false},
-                            { "name": "attack-left",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 40, "repeat": false, "autorun": false},
-            
+                            { "name": "attack-up",    "indices": [157, 158, 159, 160, 161, 162], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-right", "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-down",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 20, "repeat": false, "autorun": false},
+                            { "name": "attack-left",  "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 20, "repeat": false, "autorun": false},
                             
                             { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
                         ]
@@ -580,10 +604,10 @@
                         { "name": "spell_cast-down",  "indices": [27, 28, 29, 30, 31, 32, 33], "frameDelay": 50, "repeat": false, "autorun": false},
                         { "name": "spell_cast-left",  "indices": [14, 15, 16, 17, 18, 19, 20], "frameDelay": 50, "repeat": false, "autorun": false},
         
-                        { "name": "attack-up",    "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-right", "indices": [209, 210, 211, 212, 213, 214], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-down",  "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 40, "repeat": false, "autorun": false},
-                        { "name": "attack-left",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 40, "repeat": false, "autorun": false},
+                        { "name": "attack-up",    "indices": [157, 158, 159, 160, 161, 162], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-right", "indices": [196, 197, 198, 199, 200, 201], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-down",  "indices": [183, 184, 185, 186, 187, 188], "frameDelay": 20, "repeat": false, "autorun": false},
+                        { "name": "attack-left",  "indices": [170, 171, 172, 173, 174, 175], "frameDelay": 20, "repeat": false, "autorun": false},
         
                         
                         { "name": "dead",  "indices": [274, 275, 276, 277, 278, 279], "frameDelay": 300, "repeat": false, "autorun": false}
@@ -592,6 +616,13 @@
                 "controller": {
                     "moveController": {
                         "keys": { "up": "KeyW", "right": "KeyD", "down": "KeyS", "left": "KeyA" }
+                    },
+                    "attackController": {
+                        "keys": { "up": "ArrowUp", "right": "ArrowRight", "down": "ArrowDown", "left": "ArrowLeft" },
+                        "warrior": {
+                            "damage": 5,
+                            "cooldown": 1
+                        }
                     },
                     "animationController": {
                         "name": "playerAnimation"

@@ -12,6 +12,7 @@ export class EnemyMoveController {
 
     update() {
         if (this.isStrictStopped) return;
+        
         if (this.attackController.target) {
             this.start();
             
