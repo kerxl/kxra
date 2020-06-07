@@ -1,86 +1,67 @@
-import { Scene } from "../scene";
-import { Map } from "../../map";
-import { Camera } from "../../camera";
-import { Enemy } from "../../../enemy/enemy";
-import { Sprite } from "../../picture/sprite";
-import { Label } from "../../../ielements/label";
+import { Scene           } from "../scene";
+import { Map             } from "../../map";
+import { Camera          } from "../../camera";
+import { Enemy           } from "../../../enemy/enemy";
+import { Sprite          } from "../../picture/sprite";
+import { Label           } from "../../../ielements/label";
+import { Player          } from "../../../player/player";
+import { LevelController } from "./levelController";
+import { LevelUI         } from "./leveUI";
 
 export class Level extends Scene {
-    constructor({ name = "level", screen, player, collision, prop, parent = "none"}) {
-        super({ name: name, screen: screen, parent: parent, next: prop.next });
+    constructor({ name = "level", screen, collision, prop }) {
+        super({ name: name, screen: screen, next: prop.next });
 
         this.map = new Map(prop, collision);
-        this.player = player;
+        this.player = new Player(prop.player);
 
         this.enemies = prop.enemies.map(enemy => new Enemy(enemy));
 
+        this.controller = new LevelController({
+            playerHP: this.player.healthPoint,
+            enemiesCount: this.enemies.length,
+            levelTime: { all: prop.time, current: 0 },
+            level: this
+        });
+
         this.collision = collision;
 
-        this.interface = {
+        this.interface = new LevelUI({
             healthPoints: {
                 sprite: new Sprite(prop.interface.healthPoints.sprite),
-                x: prop.interface.healthPoints.x,
-                y: prop.interface.healthPoints.y,
+                x: prop.interface.healthPoints.x, y: prop.interface.healthPoints.y,
                 count: prop.interface.healthPoints.count
             },
-            time: new Label(prop.interface.time)
-        }
-
-        this.time = {
-            all: prop.time,
-            current: 0
-        }
+            timeLabel: new Label(prop.interface.time)
+        });
     }
 
     init() {
         this.map.init();
+        this.player.init();
+        this.interface.init();
+        super.init();
+
         this.player.controller.start();
 
-        this.enemies.forEach(enemy => enemy.init(this.player, this.collision));
-        this.collision.bodies.push(this.player.body, ...this.enemies.map(enemy => enemy.body));
+        this.collision.bodies.push(this.player.body, ...this.enemies.map(enemy => {
+            enemy.init(this.player, this.collision);
+            return enemy.body;
+        }));
         
-        this.camera = new Camera({
-            width:  this.screen.width,
-            height: this.screen.height,
-            limitX: this.map.width - this.screen.width,
-            limitY: this.map.height - this.screen.height
-        });
-        this.camera.watch(this.player);
+        (this.camera = new Camera({
+            width:  this.screen.width,                  height: this.screen.height,
+            limitX: this.map.width - this.screen.width, limitY: this.map.height - this.screen.height
+        })).watch(this.player);
 
         this.screen.setCamera(this.camera);
-
-        this.interface.healthPoints.sprite.init();
-        this.interface.time.init();
-
-        super.init();
     }
 
     update(time) {
-        if (this.time.current == 0) {
-            this.time.current = Math.trunc(time / 1000);
-            this.time.all += this.time.current;
-        }
-
         this.collision.update();
         this.camera.update();
-        this.interface.healthPoints.count = this.player.healthPoint;
-
-        if (this.time.current != Math.trunc(time / 1000)) {
-            ++this.time.current;
-
-            let min = Math.trunc((this.time.all - 1) / 60);
-            let sec = --this.time.all % 60;
-            min = (min > 9) ? min : "0" + min;
-            sec = (sec > 9) ? sec : "0" + sec;
-
-            this.interface.time.text = `Time | ${min}:${sec}`;
-        }
-
-        if (this.time.all == 0) {
-            this.status = "finish";
-            this.next = "level_2";
-        }
-            
+        this.controller.update(time, this.player.healthPoint, this.enemiesCount);
+        this.interface.update(this.player.healthPoint, this.controller.getTimeLabel(time, this.interface.timeLabel.text));
 
         super.update(time);
     }
@@ -96,11 +77,6 @@ export class Level extends Scene {
         this.map.secondRender(this.screen);
 
         super.render(time);
-
-        for (let i = 0; i < this.interface.healthPoints.count; ++i) {
-            let x = this.interface.healthPoints.x + i * this.interface.healthPoints.sprite.width;
-            this.screen.drawImage(this.interface.healthPoints.sprite.image, x, this.interface.healthPoints.y);
-        }
-        this.interface.time.render(time, this.screen);
+        this.interface.render(time, this.screen);
     }
 }

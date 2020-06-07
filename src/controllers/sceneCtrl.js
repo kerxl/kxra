@@ -1,58 +1,38 @@
+import { LoadingScene } from "../view/scene/loading";
+import { StartMenu    } from "../view/scene/menu/start";
+import { Level        } from "../view/scene/level/level";
+
 export class SceneController {
     constructor({ name = "sceneController", scenes }) {
         this.name = name;
 
-        this.scenes = {};
-        for (let scene in scenes) {
-            this.scenes[scene] = scenes[scene];
-            this.scenes[scene].isInitialized = false;
-        }
+        this.scenes = scenes;
     }
 
-    init() {
-        if (!this.scenes.loading) throw new Error("Game must have loading scene");
-
-        this.setScene("loading");
-    }
+    init() { this.setScene("loading"); }
 
     setScene(sceneName) {
         if (!this.scenes[sceneName]) return;
 
-        !this.scenes[sceneName].isInitialized && (this.scenes[sceneName].isInitialized = true) && this.scenes[sceneName].init();
+        switch(sceneName) {
+            case "startMenu": this.currentScene = new StartMenu(this.scenes.startMenu);      break;
+            case "level_1":   this.currentScene = new Level(this.scenes.level_1);            break;
+            case "level_2":   this.currentScene = new Level(this.scenes.level_2);            break;
+            default:          this.currentScene = new LoadingScene(this.scenes.loading);     break;
+        }
 
-        this.currentScene = this.scenes[sceneName];
+        this.currentScene.init();
         this.currentScene.start();
         this.currentScene.status = "running";
     }
 
-    add(...scenes) {
-        for (let scene of scenes) {
-            if (!this.scenes[scene.name]) {
-                if (!scene.name) throw new Error("Scene must have name, like 'startMenu'");
-                
-                this.scenes[scene.name] = scene;
-                this.scenes[scene.name].init();
-                this.scenes[scene.name].isInitialized = true;
-            }
-        }
-
-        return this.scenes.length;
-    }
-
-    remove(sceneName) { this.scenes[sceneName] && this.scenes.splice(this.scenes.findIndex(el => el.name == sceneName)); }
-
     update() {
-        for (let scene in this.scenes) {
-            if (this.scenes[scene].status == "finish") {
-                if (scene.next == "none") this.scenes[scene].status = "running";
-                else {
-                    this.currentScene.stop();
-                    this.setScene(this.scenes[scene].next);
-                    this.currentScene.parent = this.scenes[scene].name;
-
-                    this.scenes[scene].status = "ready";
-                    this.scenes[scene].next = "none";
-                }
+        if (this.currentScene.status == "finish") {
+            if (this.currentScene.next == "none")
+                this.currentScene.status = "running";
+            else {
+                this.currentScene.stop();
+                this.setScene(this.currentScene.next);
             }
         }
     }
